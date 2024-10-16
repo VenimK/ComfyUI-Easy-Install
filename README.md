@@ -29,7 +29,7 @@ Installation typically takes 1-2 minutes, depending on your download speed.
 * Installs **ComfyUI-Inspyrenet-Rembg**
 
 ## How to Use
-- Download and Extract [ComfyUI-Easy-Install](https://github.com/Tavris1/ComfyUI-Easy-Install/archive/refs/tags/0.1.0.zip) in a folder where ComfyUI will be installed and run 'ComfyUI-Easy-Install.bat'.
+- Extract [ComfyUI-Easy-Install](https://github.com/Tavris1/ComfyUI-Easy-Install/archive/refs/tags/0.1.0.zip) in a folder where ComfyUI will be installed and run 'ComfyUI-Easy-Install.bat'.
   - *Optionally* put your '**extra_model_paths.yaml**', '**styles.json**' (was-node-suite) and/or **rgthree_config.json**
   next to the installer to be copied to '**ComfyUI**' folders.
 - If another '**ComfyUI_windows_portable**' folder is found, the Installer will **stop** to avoid conflicts.
