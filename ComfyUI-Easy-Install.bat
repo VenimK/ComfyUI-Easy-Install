@@ -44,6 +44,7 @@ if exist ..\extra_model_paths.yaml copy ..\extra_model_paths.yaml .\ComfyUI\>nul
 if exist ..\styles.json copy ..\styles.json .\ComfyUI\custom_nodes\was-node-suite-comfyui\>nul
 if exist ..\config.ini copy ..\config.ini .\ComfyUI\custom_nodes\ComfyUI-Manager\>nul
 if exist ..\rgthree_config.json copy ..\rgthree_config.json .\ComfyUI\custom_nodes\rgthree-comfy\>nul
+if exist ..\lightglue.py copy ..\lightglue.py .\python_embeded\Lib\site-packages\kornia\feature\>nul
 
 :: Capture the end time ::
 for /f %%i in ('powershell -command "Get-Date -Format HH:mm:ss"') do set end=%%i
