@@ -42,8 +42,7 @@ Installation typically takes 2-3 minutes, depending on your download speed.
 ![ComfyUI-Easy-Install](https://github.com/user-attachments/assets/5b518a8e-1416-4b24-b03f-55534c615ead)
 
 ## Video
-![Example screenshot](https://github.com/user-attachments/assets/a2159dec-c132-4e00-9e9f-a4ebc2baf6d8)
-[![Watch the video](https://i.sstatic.net/Vp2cE.png)](https://youtu.be/vt5fpE0bzSY)
+[![Watch the video](https://i.sstatic.net/Vp2cE.png)]([https://youtu.be/vt5fpE0bzSY](https://github.com/user-attachments/assets/a2159dec-c132-4e00-9e9f-a4ebc2baf6d8))
 
 
 
