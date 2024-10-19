@@ -38,8 +38,10 @@ Installation typically takes 2-3 minutes, depending on your download speed.
   - Simply relocate the Installer to a different folder and rerun it.
 - After installation, you can **move** or **rename** the '**ComfyUI_windows_portable**' folder.
 
-## Screenshots
+## Screenshot
 ![Example screenshot](./ComfyUI-Easy-Install.png)
 
-## Screenshots
-![Video](./ComfyUI-Easy-Install.mp4)
+## Video
+![Example screenshot](https://github.com/user-attachments/assets/a2159dec-c132-4e00-9e9f-a4ebc2baf6d8)
+
+
