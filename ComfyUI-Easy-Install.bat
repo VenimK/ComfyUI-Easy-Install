@@ -1,7 +1,8 @@
-@echo off
-Title ComfyUI Easy Install by ivo 2024.10.12
+@Echo off
+Title ComfyUI Easy Install by ivo 2024.10.19
+:: Pixaroma's Related Edition ::
 
-:: set colors ::
+:: Set colors ::
 call :set_colors
 
 :: Check for Existing ComfyUI Folder ::
@@ -18,33 +19,38 @@ for /f %%i in ('powershell -command "Get-Date -Format HH:mm:ss"') do set start=%
 :: Install/Update 7zip, Git and ComfyUI ::
 call :install_7zip
 call :install_git
-call :download_and_install_copmfyui
+call :download_and_install_comfyui
 
-:: Install git nodes ::
-:: You can add/remove LINES (nodes) here
-:: Use the SAME FORMAT - call :get_node url
+:: Install Main Nodes ::
 call :get_node https://github.com/ltdrdata/ComfyUI-Manager
 call :get_node https://github.com/crystian/ComfyUI-Crystools
 call :get_node https://github.com/rgthree/rgthree-comfy
 call :get_node https://github.com/yolain/ComfyUI-Easy-Use
 call :get_node https://github.com/WASasquatch/was-node-suite-comfyui
 call :get_node https://github.com/city96/ComfyUI-GGUF
+
+:: Pixaroma's Related Nodes ::
+call :get_node https://github.com/MohammadAboulEla/ComfyUI-iTools
 call :get_node https://github.com/Fannovel16/comfyui_controlnet_aux
 call :get_node https://github.com/gseth/ControlAltAI-Nodes
-call :get_node https://github.com/MohammadAboulEla/ComfyUI-iTools
-call :get_node https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes
-call :get_node https://github.com/sipherxyz/comfyui-art-venture
+call :get_node https://github.com/kijai/ComfyUI-Florence2
+call :get_node https://github.com/kijai/ComfyUI-KJNodes
 call :get_node https://github.com/un-seen/comfyui-tensorops
 call :get_node https://github.com/SeargeDP/ComfyUI_Searge_LLM
 call :get_node https://github.com/Shadetail/ComfyUI_Eagleshadow
-call :get_node https://github.com/spinagon/ComfyUI-seamless-tiling
 call :get_node https://github.com/john-mnz/ComfyUI-Inspyrenet-Rembg
+call :get_node https://github.com/spinagon/ComfyUI-seamless-tiling
+REM call :get_node https://github.com/jags111/ComfyUI_Jags_VectorMagic
+REM call :get_node https://github.com/kijai/ComfyUI-FluxTrainer
 
-if exist ..\extra_model_paths.yaml copy ..\extra_model_paths.yaml .\ComfyUI\>nul
-if exist ..\styles.json copy ..\styles.json .\ComfyUI\custom_nodes\was-node-suite-comfyui\>nul
-if exist ..\config.ini copy ..\config.ini .\ComfyUI\custom_nodes\ComfyUI-Manager\>nul
-if exist ..\rgthree_config.json copy ..\rgthree_config.json .\ComfyUI\custom_nodes\rgthree-comfy\>nul
-if exist ..\lightglue.py copy ..\lightglue.py .\python_embeded\Lib\site-packages\kornia\feature\>nul
+:: Copy additional files if they exist ::
+call :copy_files extra_model_paths.yaml	ComfyUI
+call :copy_files styles.json			ComfyUI\custom_nodes\was-node-suite-comfyui
+call :copy_files was_suite_config.json	ComfyUI\custom_nodes\was-node-suite-comfyui
+call :copy_files config.ini				ComfyUI\custom_nodes\ComfyUI-Manager
+call :copy_files rgthree_config.json	ComfyUI\custom_nodes\rgthree-comfy
+call :copy_files lightglue.py			python_embeded\Lib\site-packages\kornia\feature
+call :copy_files run_nvidia_gpu.bat		.\
 
 :: Capture the end time ::
 for /f %%i in ('powershell -command "Get-Date -Format HH:mm:ss"') do set end=%%i
@@ -87,7 +93,7 @@ echo %path%|find /i "%ProgramFiles%\Git\cmd">nul || set path=%userpath%;%Program
 Echo.
 goto :eof
 
-:download_and_install_copmfyui
+:download_and_install_comfyui
 :: https://github.com/comfyanonymous/ComfyUI
 Echo %green%::::::::::::::: Downloading ComfyUI :::::::::::::::%reset%
 Echo.
@@ -117,5 +123,12 @@ git clone %git_url% ComfyUI/custom_nodes/%git_folder%
 if exist .\ComfyUI\custom_nodes\%git_folder%\requirements.txt (
 	.\python_embeded\python.exe -m pip install --no-warn-script-location -r .\ComfyUI\custom_nodes\%git_folder%\requirements.txt
 )
+if exist .\ComfyUI\custom_nodes\%git_folder%\install.py (
+	.\python_embeded\python.exe .\ComfyUI\custom_nodes\%git_folder%\install.py
+)
 Echo.
+goto :eof
+
+:copy_files
+if exist ..\%~1 (if exist .\%~2 copy ..\%~1 .\%~2\>nul)
 goto :eof
