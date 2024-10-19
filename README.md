@@ -31,7 +31,7 @@ Installation typically takes 2-3 minutes, depending on your download speed.
 * seamless-tiling
 
 ## How to Use
-- Download and Extract [ComfyUI-Easy-Install](https://github.com/Tavris1/ComfyUI-Easy-Install/archive/refs/tags/0.1.0.zip) in a folder where ComfyUI will be installed and run 'ComfyUI-Easy-Install.bat'.
+- Download and Extract [ComfyUI-Easy-Install](https://github.com/Tavris1/ComfyUI-Easy-Install/archive/refs/tags/ComfyUI-Easy-Install-0.1.0.zip) in a folder where ComfyUI will be installed and run 'ComfyUI-Easy-Install.bat'.
   - *Optionally* put your '**extra_model_paths.yaml**', '**styles.json**' (was-node-suite) and **rgthree_config.json**
   next to the installer to be copied to '**ComfyUI**' folders.
 - If another '**ComfyUI_windows_portable**' folder is found, the Installer will **stop** to avoid conflicts.
