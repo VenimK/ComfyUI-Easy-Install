@@ -40,3 +40,6 @@ Installation typically takes 2-3 minutes, depending on your download speed.
 
 ## Screenshots
 ![Example screenshot](./ComfyUI-Easy-Install.png)
+
+## Screenshots
+![Video](./ComfyUI-Easy-Install.mp4)
