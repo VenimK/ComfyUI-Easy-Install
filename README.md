@@ -30,10 +30,17 @@ Installation typically takes 2-3 minutes, depending on your download speed.
 * Inspyrenet-Rembg
 * seamless-tiling
 
-## Installation
-- Download and Extract [ComfyUI-Easy-Install](https://github.com/Tavris1/ComfyUI-Easy-Install/archive/refs/tags/0.1.0.zip) in a folder where ComfyUI will be installed and run 'ComfyUI-Easy-Install.bat'.
-  - *Optionally* put your '**extra_model_paths.yaml**', '**styles.json**' (was-node-suite) and **rgthree_config.json**
-  next to the installer to be copied to '**ComfyUI**' folders.
+## How to Use
+- Download and Extract [ComfyUI-Easy-Install](https://github.com/Tavris1/ComfyUI-Easy-Install/archive/refs/tags/0.17.0.zip) in a folder where ComfyUI will be installed and run '**ComfyUI-Easy-Install.bat**'.
+  - ***Optionally*** if you have a previous installation and wish to retain your settings, place these files alongside the installer.\
+  They will be automatically copied into the appropriate '**ComfyUI**' folders.
+    - **run_nvidia_gpu.bat**
+    - **extra_model_paths.yaml**
+    - **comfy.settings.json** (user/default)
+    - **config.ini** (Manager)
+    - **styles.json** (was-node-suite)
+    - **was_suite_config.json** (was-node-suite)
+    - **rgthree_config.json**
 - If another '**ComfyUI_windows_portable**' folder is found, the Installer will **stop** to avoid conflicts.
   - Simply relocate the Installer to a different folder and rerun it.
 - After installation, you can **move** or **rename** the '**ComfyUI_windows_portable**' folder.
