@@ -1,6 +1,6 @@
 @Echo off
-Title ComfyUI Easy Install by ivo 2024.10.19
-:: Pixaroma's Related Edition ::
+Title ComfyUI Easy Install by ivo v0.17.0
+:: Pixaroma Community Edition ::
 
 :: Set colors ::
 call :set_colors
@@ -40,17 +40,18 @@ call :get_node https://github.com/SeargeDP/ComfyUI_Searge_LLM
 call :get_node https://github.com/Shadetail/ComfyUI_Eagleshadow
 call :get_node https://github.com/john-mnz/ComfyUI-Inspyrenet-Rembg
 call :get_node https://github.com/spinagon/ComfyUI-seamless-tiling
-REM call :get_node https://github.com/jags111/ComfyUI_Jags_VectorMagic
 REM call :get_node https://github.com/kijai/ComfyUI-FluxTrainer
 
 :: Copy additional files if they exist ::
+md ComfyUI\user\default&&call :copy_files comfy.settings.json ComfyUI\user\default
+
+call :copy_files run_nvidia_gpu.bat		.\
 call :copy_files extra_model_paths.yaml	ComfyUI
+call :copy_files config.ini				ComfyUI\custom_nodes\ComfyUI-Manager
 call :copy_files styles.json			ComfyUI\custom_nodes\was-node-suite-comfyui
 call :copy_files was_suite_config.json	ComfyUI\custom_nodes\was-node-suite-comfyui
-call :copy_files config.ini				ComfyUI\custom_nodes\ComfyUI-Manager
 call :copy_files rgthree_config.json	ComfyUI\custom_nodes\rgthree-comfy
 call :copy_files lightglue.py			python_embeded\Lib\site-packages\kornia\feature
-call :copy_files run_nvidia_gpu.bat		.\
 
 :: Capture the end time ::
 for /f %%i in ('powershell -command "Get-Date -Format HH:mm:ss"') do set end=%%i
@@ -103,7 +104,7 @@ if not exist ComfyUI_windows_portable_nvidia.7z (
 Echo.
 Echo %green%::::::::::::::: Extracting ComfyUI :::::::::::::::%reset%
 "%ProgramFiles%\7-Zip\7z.exe" x ComfyUI_windows_portable_nvidia.7z
-::???:: erase ComfyUI_windows_portable_nvidia.7z
+:::???::: erase ComfyUI_windows_portable_nvidia.7z
 Echo.
 Echo %green%::::::::::::::: Updating ComfyUI :::::::::::::::%reset%
 Echo.
