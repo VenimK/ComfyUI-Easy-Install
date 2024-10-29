@@ -40,6 +40,7 @@ call :get_node https://github.com/SeargeDP/ComfyUI_Searge_LLM
 call :get_node https://github.com/Shadetail/ComfyUI_Eagleshadow
 call :get_node https://github.com/john-mnz/ComfyUI-Inspyrenet-Rembg
 call :get_node https://github.com/spinagon/ComfyUI-seamless-tiling
+call :get_node https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch
 REM call :get_node https://github.com/kijai/ComfyUI-FluxTrainer
 
 :: Copy additional files if they exist ::
