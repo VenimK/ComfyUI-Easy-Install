@@ -5,7 +5,7 @@
 ## General Information
 ComfyUI-Easy-Install provides a portable Windows version of ComfyUI with basic nodes included.  
 It’s ideal for safely testing ComfyUI nodes or quickly setting up a fresh instance.  
-Installation typically takes 2-3 minutes, depending on your download speed.
+Installation typically takes 3-5 minutes, depending on your download speed.
 
 ## What ComfyUI-Easy-Install Does
 > **Main modules:**
@@ -29,6 +29,7 @@ Installation typically takes 2-3 minutes, depending on your download speed.
 * Eagleshadow
 * Inspyrenet-Rembg
 * seamless-tiling
+* Inpaint-CropAndStitch
 
 ## How to Use
 - Download and Extract [ComfyUI-Easy-Install](https://github.com/Tavris1/ComfyUI-Easy-Install/releases/latest/download/ComfyUI-Easy-Install.zip) to the desired folder and run **ComfyUI-Easy-Install.bat**.
