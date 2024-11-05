@@ -1,5 +1,5 @@
 @Echo off
-Title ComfyUI Easy Install by ivo v0.19.1
+Title ComfyUI Easy Install by ivo v0.20.0
 :: Pixaroma Community Edition ::
 
 :: Set colors ::
@@ -39,12 +39,21 @@ call :get_node https://github.com/gseth/ControlAltAI-Nodes
 call :get_node https://github.com/kijai/ComfyUI-Florence2
 call :get_node https://github.com/kijai/ComfyUI-KJNodes
 call :get_node https://github.com/un-seen/comfyui-tensorops
+REM cd .\python_embeded
+REM python.exe -m pip install scikit-build-core
+REM python.exe -m pip install llama-cpp-python --prefer-binary
+REM cd ..\&&Echo.
 call :get_node https://github.com/SeargeDP/ComfyUI_Searge_LLM
 call :get_node https://github.com/Shadetail/ComfyUI_Eagleshadow
 call :get_node https://github.com/john-mnz/ComfyUI-Inspyrenet-Rembg
 call :get_node https://github.com/spinagon/ComfyUI-seamless-tiling
 call :get_node https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch
+call :get_node https://github.com/Lerc/canvas_tab
 REM call :get_node https://github.com/kijai/ComfyUI-FluxTrainer
+
+:: Install onnxruntime ::
+Echo y|.\python_embeded\python.exe -m pip uninstall onnxruntime-gpu
+.\python_embeded\python.exe -m pip install --no-cache-dir --no-warn-script-location onnxruntime-gpu
 
 :: Copy additional files if they exist ::
 md ComfyUI\user\default&&call :copy_files comfy.settings.json ComfyUI\user\default
@@ -113,7 +122,7 @@ Echo %green%::::::::::::::: Extracting ComfyUI :::::::::::::::%reset%
 Echo.
 Echo %green%::::::::::::::: Updating ComfyUI :::::::::::::::%reset%
 Echo.
-.\ComfyUI_windows_portable\python_embeded\python.exe -m pip install --no-cache-dir --upgrade pip
+.\ComfyUI_windows_portable\python_embeded\python.exe -m pip install --no-cache-dir --no-warn-script-location --upgrade pip
 cd .\ComfyUI_windows_portable\update\
 CALL update_comfyui.bat<nul
 cd ..\..\
