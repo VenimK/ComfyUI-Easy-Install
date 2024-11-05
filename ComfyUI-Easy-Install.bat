@@ -1,5 +1,5 @@
 @Echo off
-Title ComfyUI Easy Install by ivo v0.17.0
+Title ComfyUI Easy Install by ivo v0.19.1
 :: Pixaroma Community Edition ::
 
 :: Set colors ::
@@ -15,6 +15,9 @@ if exist ComfyUI_windows_portable (
 
 :: Capture the start time ::
 for /f %%i in ('powershell -command "Get-Date -Format HH:mm:ss"') do set start=%%i
+
+:: Erase pip cache ::
+if exist "%localappdata%\pip\cache" rd /s /q "%localappdata%\pip\cache"
 
 :: Install/Update 7zip, Git and ComfyUI ::
 call :install_7zip
@@ -100,7 +103,8 @@ goto :eof
 Echo %green%::::::::::::::: Downloading ComfyUI :::::::::::::::%reset%
 Echo.
 if not exist ComfyUI_windows_portable_nvidia.7z (
-    curl.exe -OL https://github.com/comfyanonymous/ComfyUI/releases/latest/download/ComfyUI_windows_portable_nvidia.7z
+    REM curl.exe -OL https://github.com/comfyanonymous/ComfyUI/releases/latest/download/ComfyUI_windows_portable_nvidia.7z
+	curl.exe -OL https://github.com/comfyanonymous/ComfyUI/releases/download/v0.2.3/ComfyUI_windows_portable_nvidia.7z
 ) else (Echo %yellow%ComfyUI_windows_portable_nvidia.7z exist and will be used%reset%)
 Echo.
 Echo %green%::::::::::::::: Extracting ComfyUI :::::::::::::::%reset%
@@ -109,6 +113,7 @@ Echo %green%::::::::::::::: Extracting ComfyUI :::::::::::::::%reset%
 Echo.
 Echo %green%::::::::::::::: Updating ComfyUI :::::::::::::::%reset%
 Echo.
+.\ComfyUI_windows_portable\python_embeded\python.exe -m pip install --no-cache-dir --upgrade pip
 cd .\ComfyUI_windows_portable\update\
 CALL update_comfyui.bat<nul
 cd ..\..\
@@ -123,7 +128,7 @@ Echo.
 if exist .\ComfyUI_windows_portable\ComfyUI cd .\ComfyUI_windows_portable
 git clone %git_url% ComfyUI/custom_nodes/%git_folder%
 if exist .\ComfyUI\custom_nodes\%git_folder%\requirements.txt (
-	.\python_embeded\python.exe -m pip install --no-warn-script-location -r .\ComfyUI\custom_nodes\%git_folder%\requirements.txt
+	.\python_embeded\python.exe -m pip install --no-cache-dir --no-warn-script-location -r .\ComfyUI\custom_nodes\%git_folder%\requirements.txt
 )
 if exist .\ComfyUI\custom_nodes\%git_folder%\install.py (
 	.\python_embeded\python.exe .\ComfyUI\custom_nodes\%git_folder%\install.py
