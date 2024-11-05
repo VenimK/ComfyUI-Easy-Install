@@ -30,6 +30,7 @@ Installation typically takes 3-5 minutes, depending on your download speed.
 * Inspyrenet-Rembg
 * seamless-tiling
 * Inpaint-CropAndStitch
+* canvas_tab
 
 ## How to Use
 - Download and Extract [ComfyUI-Easy-Install](https://github.com/Tavris1/ComfyUI-Easy-Install/releases/latest/download/ComfyUI-Easy-Install.zip) to the desired folder and run **ComfyUI-Easy-Install.bat**.
@@ -47,4 +48,4 @@ Installation typically takes 3-5 minutes, depending on your download speed.
 - After installation, you can **move** or **rename** the '**ComfyUI_windows_portable**' folder.
 
 ## Screenshot
-![ComfyUI-Easy-Install](https://github.com/user-attachments/assets/5b518a8e-1416-4b24-b03f-55534c615ead)
+![ComfyUI-Easy-Install](https://github.com/user-attachments/assets/9032aff4-f277-4269-91de-b50400a659b5)
