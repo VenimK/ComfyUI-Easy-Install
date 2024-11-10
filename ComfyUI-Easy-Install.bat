@@ -1,5 +1,5 @@
 @Echo off
-Title ComfyUI Easy Install by ivo v0.20.0
+Title ComfyUI Easy Install by ivo v0.20.1
 :: Pixaroma Community Edition ::
 
 :: Set colors ::
@@ -37,19 +37,10 @@ call :get_node https://github.com/MohammadAboulEla/ComfyUI-iTools
 call :get_node https://github.com/Fannovel16/comfyui_controlnet_aux
 call :get_node https://github.com/gseth/ControlAltAI-Nodes
 call :get_node https://github.com/kijai/ComfyUI-Florence2
-call :get_node https://github.com/kijai/ComfyUI-KJNodes
-call :get_node https://github.com/un-seen/comfyui-tensorops
-REM cd .\python_embeded
-REM python.exe -m pip install scikit-build-core
-REM python.exe -m pip install llama-cpp-python --prefer-binary
-REM cd ..\&&Echo.
 call :get_node https://github.com/SeargeDP/ComfyUI_Searge_LLM
-call :get_node https://github.com/Shadetail/ComfyUI_Eagleshadow
-call :get_node https://github.com/john-mnz/ComfyUI-Inspyrenet-Rembg
 call :get_node https://github.com/spinagon/ComfyUI-seamless-tiling
 call :get_node https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch
 call :get_node https://github.com/Lerc/canvas_tab
-REM call :get_node https://github.com/kijai/ComfyUI-FluxTrainer
 
 :: Install onnxruntime ::
 Echo y|.\python_embeded\python.exe -m pip uninstall onnxruntime-gpu
@@ -112,7 +103,6 @@ goto :eof
 Echo %green%::::::::::::::: Downloading ComfyUI :::::::::::::::%reset%
 Echo.
 if not exist ComfyUI_windows_portable_nvidia.7z (
-    REM curl.exe -OL https://github.com/comfyanonymous/ComfyUI/releases/latest/download/ComfyUI_windows_portable_nvidia.7z
 	curl.exe -OL https://github.com/comfyanonymous/ComfyUI/releases/download/v0.2.3/ComfyUI_windows_portable_nvidia.7z
 ) else (Echo %yellow%ComfyUI_windows_portable_nvidia.7z exist and will be used%reset%)
 Echo.
