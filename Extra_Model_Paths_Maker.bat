@@ -1,7 +1,9 @@
-@set yaml=extra_model_paths.yaml
-
 @Echo off
-Title Extra Model Paths Maker by ivo
+
+Title Extra Model Paths Maker by ivo v0.21.0
+
+set yaml=extra_model_paths.yaml
+
 cd /d %~dp0
 
 if not exist checkpoints (
