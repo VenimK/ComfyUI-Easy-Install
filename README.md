@@ -28,6 +28,7 @@ Installation typically takes 3-5 minutes, depending on your download speed.
 * Inpaint-CropAndStitch
 * canvas_tab
 * OmniGen
+* Inspyrenet-Rembg
 
 ## How to Use
 - Download and Extract [ComfyUI-Easy-Install](https://github.com/Tavris1/ComfyUI-Easy-Install/releases/latest/download/ComfyUI-Easy-Install.zip) to the desired folder and run **ComfyUI-Easy-Install.bat**.
@@ -44,7 +45,7 @@ Installation typically takes 3-5 minutes, depending on your download speed.
   - Simply relocate the Installer to a different folder and rerun it.
 - After installation, you can **move** or **rename** the '**ComfyUI_windows_portable**' folder.
 
-## Extra Model Paths Maker 🔥new🔥
+## Extra Model Paths Maker 🔥 New Feature  
 
 1. Place the **Extra_Model_Paths_Maker.bat** file in your shared **models** directory, then run it.
    - This will create an **extra_model_paths.yaml** file with an organized list of all subfolders within your **models** directory.
