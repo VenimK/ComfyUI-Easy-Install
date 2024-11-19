@@ -16,9 +16,9 @@ if not exist checkpoints (
 
 Echo comfyui:>%yaml%
 cd ..\
-Echo     base_path: %cd%^\>>.\models\%yaml%
+Echo     base_path: %cd%\>>.\models\%yaml%
 cd .\models
 Echo     is_default: true>>%yaml%
 Echo.>>%yaml%
-for /D %%f in (*) do echo     %%f: models^\%%f^\>>%yaml%
+for /D %%f in (*) do echo     %%f: models\%%f\>>%yaml%
 start notepad %yaml%
