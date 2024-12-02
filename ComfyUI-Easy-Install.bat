@@ -1,5 +1,5 @@
 @Echo off
-Title ComfyUI Easy Install by ivo v0.22.0 (Ep22)
+Title ComfyUI Easy Install by ivo v0.22.1 (Ep22)
 :: Pixaroma Community Edition ::
 
 :: Set colors ::
@@ -116,7 +116,7 @@ Echo %green%::::::::::::::: Updating ComfyUI :::::::::::::::%reset%
 Echo.
 .\ComfyUI_windows_portable\python_embeded\python.exe -m pip install --no-cache-dir --no-warn-script-location --upgrade pip
 cd .\ComfyUI_windows_portable\update\
-CALL update_comfyui.bat<nul
+CALL update_comfyui_and_python_dependencies.bat<nul
 cd ..\..\
 Echo.
 goto :eof
