@@ -24,6 +24,9 @@ call :install_7zip
 call :install_git
 call :download_and_install_comfyui
 
+:: Erase pip cache ::
+if exist "%localappdata%\pip\cache" rd /s /q "%localappdata%\pip\cache"
+
 :: Install Main Nodes ::
 call :get_node https://github.com/ltdrdata/ComfyUI-Manager
 call :get_node https://github.com/crystian/ComfyUI-Crystools
