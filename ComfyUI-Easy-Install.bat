@@ -1,5 +1,5 @@
 @Echo off
-Title ComfyUI Easy Install by ivo v0.24.0 (Ep24)
+Title ComfyUI Easy Install by ivo v0.24.1 (Ep24)
 :: Pixaroma Community Edition ::
 
 :: Set colors ::
@@ -23,9 +23,6 @@ if exist "%localappdata%\pip\cache" rd /s /q "%localappdata%\pip\cache"
 call :install_7zip
 call :install_git
 call :download_and_install_comfyui
-
-:: Erase pip cache ::
-if exist "%localappdata%\pip\cache" rd /s /q "%localappdata%\pip\cache"
 
 :: Install Main Nodes ::
 call :get_node https://github.com/ltdrdata/ComfyUI-Manager
@@ -51,6 +48,12 @@ call :get_node https://github.com/kaibioinfo/ComfyUI_AdvancedRefluxControl
 :: Install onnxruntime ::
 Echo y|.\python_embeded\python.exe -m pip uninstall onnxruntime-gpu
 .\python_embeded\python.exe -m pip install --no-cache-dir --no-warn-script-location onnxruntime-gpu
+
+:: Install xformers for ControlAltAI Nodes ::
+.\python_embeded\python.exe -m pip install xformers==0.0.28.post3 --index-url https://download.pytorch.org/whl/cu124
+
+:: Erase pip cache ::
+if exist "%localappdata%\pip\cache" rd /s /q "%localappdata%\pip\cache"
 
 :: Copy additional files if they exist ::
 md ComfyUI\user\default&&call :copy_files comfy.settings.json ComfyUI\user\default
