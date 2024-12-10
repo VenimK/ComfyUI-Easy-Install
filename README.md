@@ -36,6 +36,7 @@ It’s perfect for safely testing nodes or setting up a fresh instance of ComfyU
 - OmniGen  
 - Inspyrenet-Rembg  
 - AdvancedReduxControl  
+- VideoHelperSuite  
 
 ---
 
