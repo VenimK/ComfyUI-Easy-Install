@@ -48,9 +48,9 @@ It’s perfect for safely testing nodes or setting up a fresh instance of ComfyU
 3. Run **ComfyUI-Easy-Install.bat**.  
 
 ### Tips for Existing Installations:  
-- To keep your settings intact, place the following files in the same folder as the installer:  
+- To preserve settings from other ComfyUI installations, place the following files in the same folder as the installer:  
+  - `extra_model_paths.yaml` (refer to **Extra Model Paths Maker 🔥**)  
   - `run_nvidia_gpu.bat`  
-  - `extra_model_paths.yaml`  
   - `comfy.settings.json` (user/default)  
   - `config.ini` (Manager)  
   - `styles.json` (was-node-suite)  
