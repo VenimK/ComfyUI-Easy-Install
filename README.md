@@ -67,7 +67,7 @@ It’s perfect for safely testing nodes or setting up a fresh instance of ComfyU
 ## Extra Model Paths Maker 🔥  
 
 ### How to Use:  
-1. Place **Extra_Model_Paths_Maker.bat** in your shared **models** directory and run it.  
+1. Place **Extra_Model_Paths_Maker.bat** in your existing **models** folder and run it.  
    - This generates an organized `extra_model_paths.yaml` listing all subfolders in the directory.  
 2. Move `extra_model_paths.yaml` to your new **ComfyUI** folder.  
    - This allows ComfyUI to use your existing models without requiring additional downloads.  
