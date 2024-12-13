@@ -14,7 +14,7 @@ It’s perfect for safely testing nodes or setting up a fresh instance of ComfyU
 - Automatically installs or updates:  
   - **7-Zip**  
   - **Git**  
-- Deploys **ComfyUI portable + Manager**.
+- Installs **ComfyUI portable + Manager**.
 
 ### Pre-Installed Nodes  
 **Main Nodes:**  
