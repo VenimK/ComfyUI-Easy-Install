@@ -4,7 +4,7 @@
 
 ## Overview  
 **ComfyUI-Easy-Install** offers a portable Windows version of ComfyUI, complete with essential nodes included.  
-It’s perfect for safely testing nodes or setting up a fresh instance of ComfyUI.  
+It's perfect for safely testing nodes or setting up a fresh instance of ComfyUI.  
 
 ---
 
@@ -37,6 +37,7 @@ It’s perfect for safely testing nodes or setting up a fresh instance of ComfyU
 - Inspyrenet-Rembg  
 - AdvancedReduxControl  
 - VideoHelperSuite  
+- AdvancedLivePortrait  
 
 ---
 
