@@ -1,5 +1,5 @@
 @Echo off
-Title ComfyUI Easy Install by ivo v0.25.0 (Ep25)
+Title ComfyUI Easy Install by ivo v0.26.0 (Ep26)
 :: Pixaroma Community Edition ::
 
 :: Set colors ::
@@ -45,6 +45,7 @@ call :get_node https://github.com/1038lab/ComfyUI-OmniGen
 call :get_node https://github.com/john-mnz/ComfyUI-Inspyrenet-Rembg
 call :get_node https://github.com/kaibioinfo/ComfyUI_AdvancedRefluxControl
 call :get_node https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite
+call :get_node https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait
 
 :: Install onnxruntime ::
 Echo y|.\python_embeded\python.exe -m pip uninstall onnxruntime-gpu
