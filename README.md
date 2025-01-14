@@ -1,22 +1,16 @@
-# ComfyUI-Easy-Install
-
+# ComfyUI-Easy-Install  
+One-click Windows installer for a portable ComfyUI with some essential nodes.  
 > Dedicated to the **Pixaroma** team. [Discord Channel](https://discord.com/invite/gggpkVgBf3)
-
-## Overview  
-**ComfyUI-Easy-Install** offers a portable Windows version of ComfyUI, complete with essential nodes included.  
-It's perfect for safely testing nodes or setting up a fresh instance of ComfyUI.  
 
 ---
 
-## Key Features  
+## Included Core Modules  
+- **7-Zip**  
+- **Git**  
+- **ComfyUI portable**
+- **ComfyUI-Manager**
 
-### Installation Modules  
-- Automatically installs or updates:  
-  - **7-Zip**  
-  - **Git**  
-- Installs **ComfyUI portable + Manager**.
-
-### Pre-Installed Nodes  
+## Included Nodes  
 **Main Nodes:**  
 - Crystools  
 - rgthree  
@@ -41,22 +35,22 @@ It's perfect for safely testing nodes or setting up a fresh instance of ComfyUI.
 
 ---
 
-## Installation Guide  
+## Installation Steps:  
 
-### Steps:  
 1. Download the latest release of [ComfyUI-Easy-Install](https://github.com/Tavris1/ComfyUI-Easy-Install/releases/latest/download/ComfyUI-Easy-Install.zip).  
 2. Extract the ZIP file to your desired folder.  
 3. Run **ComfyUI-Easy-Install.bat**.  
 
 ### Tips for Existing Installations:  
-- To preserve settings from other ComfyUI installations, place the following files in the same folder as the installer:  
+- To preserve settings from other ComfyUI installations, place the following files in the same folder as the installer.  
+They will be copied automatically to the appropriate folders:  
   - `extra_model_paths.yaml` (refer to **Extra Model Paths Maker 🔥**)  
   - `run_nvidia_gpu.bat`  
   - `comfy.settings.json` (user/default)  
   - `config.ini` (Manager)  
   - `styles.json` (was-node-suite)  
   - `was_suite_config.json` (was-node-suite)  
-  - `rgthree_config.json`  
+  - `rgthree_config.json` (rgthree)  
 
 ### Avoiding Conflicts:  
 - If another **ComfyUI_windows_portable** folder is detected, the installer will stop to prevent overwriting.  
@@ -73,7 +67,7 @@ It's perfect for safely testing nodes or setting up a fresh instance of ComfyUI.
 2. Move `extra_model_paths.yaml` to your new **ComfyUI** folder.  
    - This allows ComfyUI to use your existing models without requiring additional downloads.  
 
-> **Note**: Directories like **LLM** and **llm_gguf** cannot be redirected with this method.  
+> **Note**: Some folders like **LLM** and **llm_gguf** cannot be redirected using this method.  
 
 ---
 
