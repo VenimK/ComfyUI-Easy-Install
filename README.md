@@ -1,5 +1,6 @@
 # ComfyUI-Easy-Install  
-One-click Windows installer for a portable ComfyUI with some essential nodes.  
+One-click portable installation of ComfyUI for Windows - Pixaroma Community Edition.
+
 > Dedicated to the **Pixaroma** team. [Discord Channel](https://discord.com/invite/gggpkVgBf3)
 
 ---
@@ -40,8 +41,11 @@ One-click Windows installer for a portable ComfyUI with some essential nodes.
 1. Download the latest release of [ComfyUI-Easy-Install](https://github.com/Tavris1/ComfyUI-Easy-Install/releases/latest/download/ComfyUI-Easy-Install.zip).  
 2. Extract the ZIP file to your desired folder.  
 3. Run **ComfyUI-Easy-Install.bat**.  
+- After installation, you can rename or relocate the **ComfyUI_windows_portable** folder as needed.  
+- If another **ComfyUI_windows_portable** folder is detected, the installer will stop to prevent conflict.  
+In this case, move the installer to another folder and run it again.  
 
-### Tips for Existing Installations:  
+## Tips for Existing Installations:  
 - To preserve settings from other ComfyUI installations, place the following files in the same folder as the installer.  
 They will be copied automatically to the appropriate folders:  
   - `extra_model_paths.yaml` (refer to **Extra Model Paths Maker 🔥**)  
@@ -52,11 +56,6 @@ They will be copied automatically to the appropriate folders:
   - `was_suite_config.json` (was-node-suite)  
   - `rgthree_config.json` (rgthree)  
 
-### Avoiding Conflicts:  
-- If another **ComfyUI_windows_portable** folder is detected, the installer will stop to prevent overwriting.  
-  - Move the installer to a different folder and rerun it.  
-- After installation, you can rename or relocate the **ComfyUI_windows_portable** folder as needed.  
-
 ---
 
 ## Extra Model Paths Maker 🔥  
@@ -65,7 +64,7 @@ They will be copied automatically to the appropriate folders:
 1. Place **Extra_Model_Paths_Maker.bat** in your existing **models** folder and run it.  
    - This generates an organized `extra_model_paths.yaml` listing all subfolders in the directory.  
 2. Move `extra_model_paths.yaml` to your new **ComfyUI** folder.  
-   - This allows ComfyUI to use your existing models without requiring additional downloads.  
+   - This allows ComfyUI to use your existing model files without additional downloads.  
 
 > **Note**: Some folders like **LLM** and **llm_gguf** cannot be redirected using this method.  
 
