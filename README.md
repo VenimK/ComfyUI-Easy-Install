@@ -1,15 +1,15 @@
 # ComfyUI-Easy-Install  
-One-click portable installation of ComfyUI for Windows - Pixaroma Community Edition.
+One-click portable installation of ComfyUI for Windows 🔹 Pixaroma Community Edition 🔹  
 
-> Dedicated to the **Pixaroma** team. [Discord Channel](https://discord.com/invite/gggpkVgBf3)
+> Dedicated to the **Pixaroma** team. [Discord Channel](https://discord.com/invite/gggpkVgBf3)  
 
 ---
 
 ## Included Core Modules  
 - **7-Zip**  
 - **Git**  
-- **ComfyUI portable**
-- **ComfyUI-Manager**
+- **ComfyUI portable**  
+- **ComfyUI-Manager**  
 
 ## Included Nodes  
 **Main Nodes:**  
