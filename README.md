@@ -41,9 +41,8 @@ One-click portable installation of ComfyUI for Windows 🔹 Pixaroma Community E
 1. Download the latest release of [ComfyUI-Easy-Install](https://github.com/Tavris1/ComfyUI-Easy-Install/releases/latest/download/ComfyUI-Easy-Install.zip).  
 2. Extract the ZIP file to your desired folder.  
 3. Run **ComfyUI-Easy-Install.bat**.  
+- **DO NOT** use system folders (Program Files, Windows, etc.) or system root (C:\\) for the installation.  
 - After installation, you can rename or relocate the **ComfyUI_windows_portable** folder as needed.  
-- If another **ComfyUI_windows_portable** folder is detected, the installer will stop to prevent conflict.  
-In this case, move the installer to another folder and run it again.  
 
 ## Tips for Existing Installations:  
 - To preserve settings from other ComfyUI installations, place the following files in the same folder as the installer.  
