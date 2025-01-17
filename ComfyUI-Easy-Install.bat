@@ -1,5 +1,5 @@
 @Echo off
-Title ComfyUI Easy Install by ivo v0.26.0 (Ep26)
+Title ComfyUI Easy Install by ivo v0.26.1 (Ep26)
 :: Pixaroma Community Edition ::
 
 :: Set colors ::
@@ -8,7 +8,7 @@ call :set_colors
 :: Check for Existing ComfyUI Folder ::
 if exist ComfyUI_windows_portable (
 	Echo %warning%WARNING:%reset% '%bold%ComfyUI_windows_portable%reset%' folder already exists!
-	Echo %green%Relocate this file to a different folder and rerun it.%reset%
+	Echo %green%Move this file to another folder and run it again.%reset%
 	Echo Press any key to Exit...&Pause>nul
 	goto :eof
 )
@@ -117,6 +117,16 @@ if not exist ComfyUI_windows_portable_nvidia.7z (
 	curl.exe -OL https://github.com/comfyanonymous/ComfyUI/releases/download/v0.2.3/ComfyUI_windows_portable_nvidia.7z
 ) else (Echo %yellow%ComfyUI_windows_portable_nvidia.7z exist and will be used%reset%)
 Echo.
+
+if not exist ComfyUI_windows_portable_nvidia.7z (
+	cls
+	Echo %warning%WARNING:%reset% Cannot create %yellow%ComfyUI_windows_portable_nvidia.7z%reset%
+	Echo Make sure you are NOT using system folders like %yellow%Program Files, Windows%reset% or system root %yellow%C:\%reset%
+	Echo %green%Move this file to another folder and run it again.%reset%
+	Echo Press any key to Exit...&Pause>nul
+	exit /b
+)
+
 Echo %green%::::::::::::::: Extracting ComfyUI :::::::::::::::%reset%
 "%ProgramFiles%\7-Zip\7z.exe" x ComfyUI_windows_portable_nvidia.7z
 :::???::: erase ComfyUI_windows_portable_nvidia.7z
