@@ -1,5 +1,5 @@
 @Echo off
-Title ComfyUI Easy Install by ivo v0.26.1 (Ep26)
+Title ComfyUI Easy Install by ivo v0.26.2 (Ep26)
 :: Pixaroma Community Edition ::
 
 :: Set colors ::
@@ -52,7 +52,7 @@ Echo y|.\python_embeded\python.exe -m pip uninstall onnxruntime-gpu
 .\python_embeded\python.exe -m pip install --no-cache-dir --no-warn-script-location onnxruntime-gpu
 
 :: Install xformers for ControlAltAI Nodes ::
-.\python_embeded\python.exe -m pip install xformers==0.0.28.post3 --index-url https://download.pytorch.org/whl/cu124
+.\python_embeded\python.exe -m pip install xformers==0.0.29.post1 --index-url https://download.pytorch.org/whl/cu124
 
 :: Erase pip cache ::
 if exist "%localappdata%\pip\cache" rd /s /q "%localappdata%\pip\cache"
