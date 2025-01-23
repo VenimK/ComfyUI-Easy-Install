@@ -11,15 +11,12 @@ One-click portable installation of ComfyUI for Windows 🔹 Pixaroma Community E
 - **ComfyUI portable**  
 - **ComfyUI-Manager**  
 
-## Included Nodes  
-**Main Nodes:**  
+## Included Pixaroma-Related Nodes  
 - Crystools  
 - rgthree  
 - Easy-Use  
 - was-node-suite  
 - GGUF  
-
-**Pixaroma-Related Nodes:**  
 - iTools  
 - controlnet_aux  
 - ControlAltAI-Nodes  
@@ -65,7 +62,7 @@ They will be copied automatically to the appropriate folders:
 2. Move `extra_model_paths.yaml` to your new **ComfyUI** folder.  
    - This allows ComfyUI to use your existing model files without additional downloads.  
 
-> **Note**: Some folders like **LLM** and **llm_gguf** cannot be redirected using this method.  
+> **Note**: Some folders like **LLM** and **llm_gguf** cannot be redirected this way.  
 
 ---
 
