@@ -1,6 +1,6 @@
 @Echo off
 
-Title Extra Model Paths Maker by ivo v0.21.0
+Title Extra Model Paths Maker by ivo v0.26.0
 
 set yaml=extra_model_paths.yaml
 
@@ -14,11 +14,14 @@ if not exist checkpoints (
 	goto :eof
 )
 
+set modelsfolder=%~dp0
+for /f "delims=" %%A in ('cd') do set modelsname=%%~nxA
+
 Echo comfyui:>%yaml%
 cd ..\
-Echo     base_path: %cd%\>>.\models\%yaml%
-cd .\models
+Echo     base_path: %cd%\>>%modelsfolder%\%yaml%
+cd %modelsfolder%
 Echo     is_default: true>>%yaml%
 Echo.>>%yaml%
-for /D %%f in (*) do echo     %%f: models\%%f\>>%yaml%
+for /D %%f in (*) do echo     %%f: %modelsname%\%%f\>>%yaml%
 start notepad %yaml%
