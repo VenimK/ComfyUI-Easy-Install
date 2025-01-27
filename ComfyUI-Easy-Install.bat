@@ -1,5 +1,5 @@
 @Echo off
-Title ComfyUI Easy Install by ivo v0.26.2 (Ep26)
+Title ComfyUI Easy Install by ivo v0.26.4 (Ep26)
 :: Pixaroma Community Edition ::
 
 :: Set colors ::
@@ -113,10 +113,8 @@ goto :eof
 :: https://github.com/comfyanonymous/ComfyUI
 Echo %green%::::::::::::::: Downloading ComfyUI :::::::::::::::%reset%
 Echo.
-if not exist ComfyUI_windows_portable_nvidia.7z (
-	curl.exe -OL https://github.com/comfyanonymous/ComfyUI/releases/download/v0.2.3/ComfyUI_windows_portable_nvidia.7z
-) else (Echo %yellow%ComfyUI_windows_portable_nvidia.7z exist and will be used%reset%)
-Echo.
+if exist ComfyUI_windows_portable_nvidia.7z erase ComfyUI_windows_portable_nvidia.7z
+curl.exe -OL https://github.com/comfyanonymous/ComfyUI/releases/download/v0.2.3/ComfyUI_windows_portable_nvidia.7z
 
 if not exist ComfyUI_windows_portable_nvidia.7z (
 	cls
@@ -129,7 +127,7 @@ if not exist ComfyUI_windows_portable_nvidia.7z (
 
 Echo %green%::::::::::::::: Extracting ComfyUI :::::::::::::::%reset%
 "%ProgramFiles%\7-Zip\7z.exe" x ComfyUI_windows_portable_nvidia.7z
-:::???::: erase ComfyUI_windows_portable_nvidia.7z
+erase ComfyUI_windows_portable_nvidia.7z
 Echo.
 Echo %green%::::::::::::::: Updating ComfyUI :::::::::::::::%reset%
 Echo.
