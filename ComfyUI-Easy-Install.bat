@@ -1,5 +1,5 @@
 @echo off
-Title ComfyUI Easy Install by ivo v0.32.0 (Ep32)
+Title ComfyUI Easy Install by ivo v0.33.0 (Ep33)
 :: Pixaroma Community Edition ::
 
 :: Set colors ::
@@ -45,6 +45,13 @@ call :get_node https://github.com/kaibioinfo/ComfyUI_AdvancedRefluxControl
 call :get_node https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite
 call :get_node https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait
 call :get_node https://github.com/Yanick112/ComfyUI-ToSVG
+
+:: Install pylatexenc (for kokoro) ::
+curl.exe -OL https://www.piwheels.org/simple/pylatexenc/pylatexenc-3.0a32-py3-none-any.whl
+.\python_embeded\python.exe -m pip install pylatexenc-3.0a32-py3-none-any.whl
+erase pylatexenc-3.0a32-py3-none-any.whl
+
+call :get_node https://github.com/stavsap/comfyui-kokoro
 
 :: Install onnxruntime ::
 .\python_embeded\python.exe -m pip install onnxruntime-gpu --no-cache-dir --no-warn-script-location
