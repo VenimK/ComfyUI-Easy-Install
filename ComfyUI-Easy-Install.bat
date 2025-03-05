@@ -1,5 +1,5 @@
 @echo off
-Title ComfyUI Easy Install by ivo v0.34.0 (Ep34)
+Title ComfyUI Easy Install by ivo v0.36.0 (Ep36)
 :: Pixaroma Community Edition ::
 
 :: Set colors ::
@@ -135,7 +135,7 @@ echo.
 .\ComfyUI_windows_portable\python_embeded\python.exe -m pip uninstall -y torch torchvision torchaudio
 .\ComfyUI_windows_portable\python_embeded\python.exe -m pip install --upgrade pip --no-cache-dir --no-warn-script-location
 cd .\ComfyUI_windows_portable\python_embeded\
-python -m pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 xformers==0.0.29.post2 --extra-index-url https://download.pytorch.org/whl/cu126 --no-cache-dir --no-warn-script-location
+python -m pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 xformers==0.0.29.post3 --extra-index-url https://download.pytorch.org/whl/cu126 --no-cache-dir --no-warn-script-location
 cd ..\update\
 if exist update_comfyui_and_python_dependencies.bat rename update_comfyui_and_python_dependencies.bat "!DON'T USE THIS! update_comfyui_and_python_dependencies.bat"
 CALL update_comfyui.bat nopause
