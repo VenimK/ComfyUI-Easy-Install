@@ -30,7 +30,7 @@ One-click portable installation of ComfyUI for Windows 🔹 Pixaroma Community E
 - AdvancedReduxControl  
 - VideoHelperSuite  
 - AdvancedLivePortrait  
-- Kokorot  
+- Kokoro  
 - Janus-Pro  
 
 ---
