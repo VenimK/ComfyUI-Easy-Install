@@ -68,5 +68,7 @@ They will be copied automatically to the appropriate folders:
 
 ---
 
-## Screenshot  
-![ComfyUI-Easy-Install](https://github.com/user-attachments/assets/9032aff4-f277-4269-91de-b50400a659b5)
+## Screenshots  
+![VideoHelper](https://github.com/user-attachments/assets/473d9acd-3d8d-4c25-acc6-7c2760067382)
+![Searge](https://github.com/user-attachments/assets/3e54b80e-1ca7-4fe4-89c2-3d1b2beb7e8a)
+![End](https://github.com/user-attachments/assets/da090bd5-0e13-41e1-8a81-bf2d24a8632c)
