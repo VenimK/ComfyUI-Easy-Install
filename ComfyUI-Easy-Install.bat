@@ -1,14 +1,22 @@
 @echo off
-Title ComfyUI Easy Install by ivo v0.36.0 (Ep36)
+Title ComfyUI Easy Install by ivo v0.37.0 (Ep37)
 :: Pixaroma Community Edition ::
 
 :: Set colors ::
 call :set_colors
 
 :: Check for Existing ComfyUI Folder ::
-if exist ComfyUI_windows_portable (
-	echo %warning%WARNING:%reset% '%bold%ComfyUI_windows_portable%reset%' folder already exists!
+if exist ComfyUI-Easy-Install (
+	echo %warning%WARNING:%reset% '%bold%ComfyUI-Easy-Install%reset%' folder already exists!
 	echo %green%Move this file to another folder and run it again.%reset%
+	echo Press any key to Exit...&Pause>nul
+	goto :eof
+)
+
+:: Check for Existing Helper-CEI.zip ::
+if not exist Helper-CEI.zip (
+	echo %warning%WARNING:%reset% '%bold%Helper-CEI.zip%reset%' not exists!
+	echo %green%Unzip the entire package and try again.%reset%
 	echo Press any key to Exit...&Pause>nul
 	goto :eof
 )
@@ -16,13 +24,39 @@ if exist ComfyUI_windows_portable (
 :: Capture the start time ::
 for /f %%i in ('powershell -command "Get-Date -Format HH:mm:ss"') do set start=%%i
 
-:: Erase pip cache ::
-if exist "%localappdata%\pip\cache" rd /s /q "%localappdata%\pip\cache"
+:: Clear Pip Cache ::
+if exist "%localappdata%\pip\cache" rd /s /q "%localappdata%\pip\cache"&&md "%localappdata%\pip\cache"
+echo %green%::::::::::::::: Clearing Pip Cache %reset%%yellow%Done%reset%%green% :::::::::::::::%reset%
+echo.
 
-:: Install/Update 7zip, Git and ComfyUI ::
-call :install_7zip
+:: Install/Update Git ::
 call :install_git
-call :download_and_install_comfyui
+
+:: Check if git is installed ::
+for /F "tokens=*" %%g in ('git --version') do (set gitversion=%%g)
+Echo %gitversion% | findstr /C:"version">nul&&(
+	Echo %bold%git%reset% %yellow%is installed%reset%
+	Echo.) || (
+    Echo %warning%WARNING:%reset% %bold%'git'%reset% is NOT installed
+	Echo Please install %bold%'git'%reset% manually from %yellow%https://git-scm.com/%reset% and run this installer again
+	Echo Press any key to Exit...&Pause>nul
+	exit /b
+)
+
+:: System folder? ::
+md ComfyUI-Easy-Install
+if not exist ComfyUI-Easy-Install (
+	cls
+	echo %warning%WARNING:%reset% Cannot create folder %yellow%ComfyUI-Easy-Install%reset%
+	echo Make sure you are NOT using system folders like %yellow%Program Files, Windows%reset% or system root %yellow%C:\%reset%
+	echo %green%Move this file to another folder and run it again.%reset%
+	echo Press any key to Exit...&Pause>nul
+	exit /b
+)
+cd ComfyUI-Easy-Install
+
+:: Install ComfyUI ::
+call :install_comfyui
 
 :: Install Pixaroma's Related Nodes ::
 call :get_node https://github.com/ltdrdata/ComfyUI-Manager
@@ -46,7 +80,7 @@ call :get_node https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite
 call :get_node https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait
 call :get_node https://github.com/Yanick112/ComfyUI-ToSVG
 
-:: Install pylatexenc (for kokoro) ::
+:: Install pylatexenc for kokoro ::
 curl.exe -OL https://www.piwheels.org/simple/pylatexenc/pylatexenc-3.0a32-py3-none-any.whl
 .\python_embeded\python.exe -m pip install pylatexenc-3.0a32-py3-none-any.whl --no-cache-dir --no-warn-script-location
 erase pylatexenc-3.0a32-py3-none-any.whl
@@ -58,22 +92,23 @@ call :get_node https://github.com/CY-CHENYUE/ComfyUI-Janus-Pro
 :: Install onnxruntime ::
 .\python_embeded\python.exe -m pip install onnxruntime-gpu --no-cache-dir --no-warn-script-location
 
+:: Extract 'update' folder ::
+cd ..\
+tar -xf .\Helper-CEI.zip
+cd ComfyUI-Easy-Install
+
 :: Copy additional files if they exist ::
-md ComfyUI\user\default
-call :copy_files comfy.settings.json	ComfyUI\user\default
 call :copy_files run_nvidia_gpu.bat		.\
 call :copy_files extra_model_paths.yaml	ComfyUI
-call :copy_files config.ini				ComfyUI\custom_nodes\ComfyUI-Manager
-call :copy_files styles.json			ComfyUI\custom_nodes\was-node-suite-comfyui
+call :copy_files comfy.settings.json	ComfyUI\user\default
 call :copy_files was_suite_config.json	ComfyUI\custom_nodes\was-node-suite-comfyui
 call :copy_files rgthree_config.json	ComfyUI\custom_nodes\rgthree-comfy
-call :copy_files lightglue.py			python_embeded\Lib\site-packages\kornia\feature
 
 :: Capture the end time ::
 for /f %%i in ('powershell -command "Get-Date -Format HH:mm:ss"') do set end=%%i
 for /f %%i in ('powershell -command "(New-TimeSpan -Start (Get-Date '%start%') -End (Get-Date '%end%')).TotalSeconds"') do set diff=%%i
 
-:: Completion Message ::
+:: Final Messages ::
 echo.
 echo %green%::::::::::::::: Installation Complete :::::::::::::::%reset%
 echo %green%::::::::::::::: Total Running Time:%reset%%red% %diff% %reset%%green%seconds%reset%
@@ -91,14 +126,6 @@ set    bold=[1m
 set   reset=[0m
 goto :eof
 
-:install_7zip
-:: https://www.7-zip.org/
-echo %green%::::::::::::::: Installing/Updating 7-Zip :::::::::::::::%reset%
-echo.
-winget install -e --id 7zip.7zip
-echo.
-goto :eof
-
 :install_git
 :: https://git-scm.com/
 echo %green%::::::::::::::: Installing/Updating Git :::::::::::::::%reset%
@@ -110,36 +137,26 @@ echo %path%|find /i "%ProgramFiles%\Git\cmd">nul || set path=%userpath%;%Program
 echo.
 goto :eof
 
-:download_and_install_comfyui
+:install_comfyui
 :: https://github.com/comfyanonymous/ComfyUI
-echo %green%::::::::::::::: Downloading ComfyUI :::::::::::::::%reset%
+echo %green%::::::::::::::: Installing ComfyUI :::::::::::::::%reset%
 echo.
-if exist ComfyUI_windows_portable_nvidia.7z erase ComfyUI_windows_portable_nvidia.7z
-curl.exe -OL https://github.com/comfyanonymous/ComfyUI/releases/download/v0.2.3/ComfyUI_windows_portable_nvidia.7z
-
-if not exist ComfyUI_windows_portable_nvidia.7z (
-	cls
-	echo %warning%WARNING:%reset% Cannot create %yellow%ComfyUI_windows_portable_nvidia.7z%reset%
-	echo Make sure you are NOT using system folders like %yellow%Program Files, Windows%reset% or system root %yellow%C:\%reset%
-	echo %green%Move this file to another folder and run it again.%reset%
-	echo Press any key to Exit...&Pause>nul
-	exit /b
-)
-
-echo %green%::::::::::::::: Extracting ComfyUI :::::::::::::::%reset%
-"%ProgramFiles%\7-Zip\7z.exe" x ComfyUI_windows_portable_nvidia.7z
-erase ComfyUI_windows_portable_nvidia.7z
-echo.
-echo %green%::::::::::::::: Updating ComfyUI :::::::::::::::%reset%
-echo.
-.\ComfyUI_windows_portable\python_embeded\python.exe -m pip uninstall -y torch torchvision torchaudio
-.\ComfyUI_windows_portable\python_embeded\python.exe -m pip install --upgrade pip --no-cache-dir --no-warn-script-location
-cd .\ComfyUI_windows_portable\python_embeded\
-python -m pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 xformers==0.0.29.post3 --extra-index-url https://download.pytorch.org/whl/cu126 --no-cache-dir --no-warn-script-location
-cd ..\update\
-if exist update_comfyui_and_python_dependencies.bat rename update_comfyui_and_python_dependencies.bat "!DON'T USE THIS! update_comfyui_and_python_dependencies.bat"
-CALL update_comfyui.bat nopause
-cd ..\..\
+git clone https://github.com/comfyanonymous/ComfyUI ComfyUI
+curl -OL https://www.python.org/ftp/python/3.11.9/python-3.11.9-embed-amd64.zip
+md python_embeded&&cd python_embeded
+tar -xf ..\python-3.11.9-embed-amd64.zip
+erase ..\python-3.11.9-embed-amd64.zip
+curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+.\python.exe get-pip.py --no-cache-dir --no-warn-script-location
+Echo ../ComfyUI> python311._pth
+Echo python311.zip>> python311._pth
+Echo .>> python311._pth
+Echo import site>> python311._pth
+.\python.exe -m pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 xformers==0.0.29.post3 --extra-index-url https://download.pytorch.org/whl/cu126 --no-cache-dir --no-warn-script-location
+.\python.exe -m pip install pygit2 --no-cache-dir --no-warn-script-location
+cd ..\ComfyUI
+..\python_embeded\python.exe -m pip install -r requirements.txt --no-cache-dir --no-warn-script-location
+cd ..\
 echo.
 goto :eof
 
