@@ -6,7 +6,6 @@ One-click portable installation of ComfyUI for Windows 🔹 Pixaroma Community E
 ---
 
 ## Included Core Modules  
-- **7-Zip**  
 - **Git**  
 - **ComfyUI portable**  
 - **ComfyUI-Manager**  
@@ -46,13 +45,11 @@ One-click portable installation of ComfyUI for Windows 🔹 Pixaroma Community E
 ## Tips for Existing Installations:  
 - To preserve settings from other ComfyUI installations, place the following files in the same folder as the installer.  
 They will be copied automatically to the appropriate folders:  
-  - `extra_model_paths.yaml` (refer to **Extra Model Paths Maker 🔥**)  
-  - `run_nvidia_gpu.bat`  
-  - `comfy.settings.json` (user/default)  
-  - `config.ini` (Manager)  
-  - `styles.json` (was-node-suite)  
-  - `was_suite_config.json` (was-node-suite)  
-  - `rgthree_config.json` (rgthree)  
+      - `run_nvidia_gpu.bat`  
+      - `extra_model_paths.yaml` (refer to **Extra Model Paths Maker 🔥**)  
+      - `comfy.settings.json` (user/default)  
+      - `was_suite_config.json` (custom_nodes/was-node-suite-comfyui)  
+      - `rgthree_config.json` (custom_nodes/rgthree-comfy)  
 
 ---
 
@@ -60,11 +57,25 @@ They will be copied automatically to the appropriate folders:
 
 ### How to Use:  
 1. Place **Extra_Model_Paths_Maker.bat** in your existing **models** folder and run it.  
-   - This generates an organized `extra_model_paths.yaml` listing all subfolders in the directory.  
+       - This generates an organized `extra_model_paths.yaml` listing all subfolders in the directory.  
 2. Move `extra_model_paths.yaml` to your new **ComfyUI** folder.  
-   - This allows ComfyUI to use your existing model files without additional downloads.  
+       - This allows ComfyUI to use your existing model files without additional downloads.  
 
 > **Note**: Some folders like **LLM** and **llm_gguf** cannot be redirected this way.  
+
+---
+
+## v0.37.0 (Ep37)  
+
+### What's New:  
+
+- Completely rewritten installation process  
+- 30% Faster Installation
+- Eliminated dependency on 7zip  
+- Clearing the Pip Cache  
+- Two new files are available alongside **`run_nvidia_gpu.bat`**:  
+      - **`Update All and RUN.bat`** – Updates ComfyUI and Nodes, then launches it.  
+      - **`Update Comfy and RUN.bat`** – Updates only ComfyUI and launches it.  
 
 ---
 
