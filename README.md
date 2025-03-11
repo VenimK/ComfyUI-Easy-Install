@@ -8,19 +8,21 @@ One-click portable installation of ComfyUI for Windows 🔹 Pixaroma Community E
 ## Included Core Modules  
 - **Git**  
 - **ComfyUI portable**  
-- **ComfyUI-Manager**  
 
 ## Included Pixaroma-Related Nodes  
+- ComfyUI-Manager  
+- was-node-suite  
+- Easy-Use  
+- controlnet_aux  
+- Comfyroll Studio  
 - Crystools  
 - rgthree  
-- Easy-Use  
-- was-node-suite  
 - GGUF  
-- iTools  
-- controlnet_aux  
-- ControlAltAI-Nodes  
 - Florence2  
 - Searge_LLM  
+- ControlAltAI-Nodes  
+- Ollama  
+- iTools  
 - seamless-tiling  
 - Inpaint-CropAndStitch  
 - canvas_tab  
@@ -29,8 +31,10 @@ One-click portable installation of ComfyUI for Windows 🔹 Pixaroma Community E
 - AdvancedReduxControl  
 - VideoHelperSuite  
 - AdvancedLivePortrait  
+- ComfyUI-ToSVG  
 - Kokoro  
 - Janus-Pro  
+- Sonic  
 
 ---
 
@@ -65,17 +69,15 @@ They will be copied automatically to the appropriate folders:
 
 ---
 
-## v0.37.0 (Ep37)  
-
-### What's New:  
+### Latest Changes:  
 
 - Completely rewritten installation process  
 - 30% Faster Installation
 - Eliminated dependency on 7zip  
 - Clearing the Pip Cache  
-- Two new files are available alongside **`run_nvidia_gpu.bat`**:  
-      - **`Update All and RUN.bat`** – Updates ComfyUI and Nodes, then launches it.  
-      - **`Update Comfy and RUN.bat`** – Updates only ComfyUI and launches it.  
+- Two new files have been added to **`run_nvidia_gpu.bat`**:  
+      - **`Update All and RUN.bat`** – Updates ComfyUI and its nodes and starts it  
+      - **`Update Comfy and RUN.bat`** – Updates only ComfyUI and starts it  
 
 ---
 
