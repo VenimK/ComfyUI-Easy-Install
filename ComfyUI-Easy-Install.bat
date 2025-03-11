@@ -1,5 +1,5 @@
 @echo off
-Title ComfyUI Easy Install by ivo v0.37.0 (Ep37)
+Title ComfyUI Easy Install by ivo v0.38.0 (Ep38)
 :: Pixaroma Community Edition ::
 
 :: Set colors ::
@@ -60,16 +60,18 @@ call :install_comfyui
 
 :: Install Pixaroma's Related Nodes ::
 call :get_node https://github.com/ltdrdata/ComfyUI-Manager
+call :get_node https://github.com/WASasquatch/was-node-suite-comfyui
+call :get_node https://github.com/yolain/ComfyUI-Easy-Use
+call :get_node https://github.com/Fannovel16/comfyui_controlnet_aux
+call :get_node https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes
 call :get_node https://github.com/crystian/ComfyUI-Crystools
 call :get_node https://github.com/rgthree/rgthree-comfy
-call :get_node https://github.com/yolain/ComfyUI-Easy-Use
-call :get_node https://github.com/WASasquatch/was-node-suite-comfyui
 call :get_node https://github.com/city96/ComfyUI-GGUF
-call :get_node https://github.com/MohammadAboulEla/ComfyUI-iTools
-call :get_node https://github.com/Fannovel16/comfyui_controlnet_aux
-call :get_node https://github.com/gseth/ControlAltAI-Nodes
 call :get_node https://github.com/kijai/ComfyUI-Florence2
 call :get_node https://github.com/SeargeDP/ComfyUI_Searge_LLM
+call :get_node https://github.com/gseth/ControlAltAI-Nodes
+call :get_node https://github.com/stavsap/comfyui-ollama
+call :get_node https://github.com/MohammadAboulEla/ComfyUI-iTools
 call :get_node https://github.com/spinagon/ComfyUI-seamless-tiling
 call :get_node https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch
 call :get_node https://github.com/Lerc/canvas_tab
@@ -88,6 +90,7 @@ Echo.
 
 call :get_node https://github.com/stavsap/comfyui-kokoro
 call :get_node https://github.com/CY-CHENYUE/ComfyUI-Janus-Pro
+call :get_node https://github.com/smthemex/ComfyUI_Sonic
 
 :: Install onnxruntime ::
 .\python_embeded\python.exe -m pip install onnxruntime-gpu --no-cache-dir --no-warn-script-location
