@@ -43,9 +43,9 @@ One-click portable installation of ComfyUI for Windows 🔹 Pixaroma Community E
 1. Download the latest release from [HERE](https://github.com/Tavris1/ComfyUI-Easy-Install/releases/latest/download/ComfyUI-Easy-Install.zip).  
 2. Extract the ZIP file to your desired folder.  
 **DO NOT** use system folders like **`Program Files`**, **`Windows`** or system root **`C:\`**  
-3. Run `ComfyUI-Easy-Install.bat` for GPUs other than the RTX 50 series.  
-or `ComfyUI-Easy-Install (RTX 50 series).bat` if you have RTX 5070, 5080 or 5090 GPU.  
-  - After installation, you can rename or move `ComfyUI-Easy-Install` folder if needed.  
+3. Run **`"ComfyUI-Easy-Install.bat"`** for GPUs other than the RTX 50 series.  
+or **`"ComfyUI-Easy-Install (RTX 50 series).bat"`** if you have RTX 5070, 5080 or 5090 GPU.  
+  - After installation, you can rename or move **`"ComfyUI-Easy-Install"`** folder if needed.  
 
 ## Tips for Existing Installations:  
 - To preserve settings from other ComfyUI installations, place the following files in the same folder as the installer.  
