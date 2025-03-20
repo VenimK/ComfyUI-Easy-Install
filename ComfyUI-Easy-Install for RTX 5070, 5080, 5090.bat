@@ -1,5 +1,5 @@
 @echo off
-Title ComfyUI Easy Install by ivo v0.39.0 (Ep39)
+Title ComfyUI Easy Install for 50x Series (Blackwell) by ivo v0.39.1 (Ep39)
 :: Pixaroma Community Edition ::
 
 :: Set colors ::
@@ -83,7 +83,7 @@ call :get_node https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait
 call :get_node https://github.com/Yanick112/ComfyUI-ToSVG
 
 :: Install pylatexenc for kokoro ::
-curl.exe -OL https://www.piwheels.org/simple/pylatexenc/pylatexenc-3.0a32-py3-none-any.whl
+curl.exe -OL https://www.piwheels.org/simple/pylatexenc/pylatexenc-3.0a32-py3-none-any.whl --ssl-no-revoke
 .\python_embeded\python.exe -m pip install pylatexenc-3.0a32-py3-none-any.whl --no-cache-dir --no-warn-script-location
 erase pylatexenc-3.0a32-py3-none-any.whl
 Echo.
@@ -145,11 +145,11 @@ goto :eof
 echo %green%::::::::::::::: Installing ComfyUI :::::::::::::::%reset%
 echo.
 git clone https://github.com/comfyanonymous/ComfyUI ComfyUI
-curl -OL https://www.python.org/ftp/python/3.11.9/python-3.11.9-embed-amd64.zip
+curl -OL https://www.python.org/ftp/python/3.11.9/python-3.11.9-embed-amd64.zip --ssl-no-revoke
 md python_embeded&&cd python_embeded
 tar -xf ..\python-3.11.9-embed-amd64.zip
 erase ..\python-3.11.9-embed-amd64.zip
-curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py --ssl-no-revoke
 .\python.exe get-pip.py --no-cache-dir --no-warn-script-location
 Echo ../ComfyUI> python311._pth
 Echo python311.zip>> python311._pth
