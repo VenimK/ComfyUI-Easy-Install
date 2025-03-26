@@ -35,6 +35,7 @@ One-click portable installation of ComfyUI for Windows 🔹 Pixaroma Community E
 - Kokoro  
 - Janus-Pro  
 - Sonic  
+- TeaCache  
 
 ---
 
@@ -44,7 +45,7 @@ One-click portable installation of ComfyUI for Windows 🔹 Pixaroma Community E
 2. Extract the ZIP file to your desired folder.  
 **DO NOT** use system folders like **`Program Files`**, **`Windows`** or system root **`C:\`**  
 3. Run **`"ComfyUI-Easy-Install.bat"`** for GPUs other than the RTX 50 series  
-or **`"ComfyUI-Easy-Install for RTX 5070, 5080, 5090.bat"`** if you have RTX 5070, 5080 or 5090 GPU.  
+or **`"ComfyUI-Easy-Install for RTX 50x.bat"`** if you have RTX 5070, 5080 or 5090 GPU.  
   - After installation, you can rename or move **`"ComfyUI-Easy-Install"`** folder if needed.  
   - This installation does not affect existing ComfyUI installations in any way.  
   This way you can have multiple installations in different folders.  
@@ -52,11 +53,11 @@ or **`"ComfyUI-Easy-Install for RTX 5070, 5080, 5090.bat"`** if you have RTX 507
 ## Tips for Existing Installations:  
 - To preserve settings from other ComfyUI installations, place the following files in the same folder as the installer.  
 They will be copied automatically to the appropriate folders:  
-      - **`run_nvidia_gpu.bat`**  
-      - **`extra_model_paths.yaml`** (refer to **Extra Model Paths Maker 🔥**)  
-      - **`comfy.settings.json`** (user/default)  
-      - **`was_suite_config.json`** (custom_nodes/was-node-suite-comfyui)  
-      - **`rgthree_config.json`** (custom_nodes/rgthree-comfy)  
+      - `run_nvidia_gpu.bat`  
+      - `extra_model_paths.yaml` (refer to **Extra Model Paths Maker 🔥**)  
+      - `comfy.settings.json` (user/default)  
+      - `was_suite_config.json` (custom_nodes/was-node-suite-comfyui)  
+      - `rgthree_config.json` (custom_nodes/rgthree-comfy)  
 
 ---
 
