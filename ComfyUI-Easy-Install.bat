@@ -1,5 +1,5 @@
 @echo off
-Title ComfyUI Easy Install by ivo v0.40.0 (Ep40)
+Title ComfyUI Easy Install by ivo v0.40.1 (Ep40)
 :: Pixaroma Community Edition ::
 
 :: Set colors ::
@@ -20,6 +20,11 @@ if not exist Helper-CEI.zip (
 	echo Press any key to Exit...&Pause>nul
 	goto :eof
 )
+
+:: Set Local Paths ::
+if exist %windir%\system32 set path=%PATH%;%windir%\System32
+if exist %windir%\system32\WindowsPowerShell\v1.0 set path=%PATH%;%windir%\system32\WindowsPowerShell\v1.0
+if exist %localappdata%\Microsoft\WindowsApps set path=%PATH%;%localappdata%\Microsoft\WindowsApps
 
 :: Capture the start time ::
 for /f %%i in ('powershell -command "Get-Date -Format HH:mm:ss"') do set start=%%i
@@ -135,9 +140,7 @@ goto :eof
 echo %green%::::::::::::::: Installing/Updating Git :::::::::::::::%reset%
 echo.
 winget install --id Git.Git -e --source winget
-for /f "tokens=3*" %%A in ('reg query "HKCU\Environment" /v Path') do set userpath=%%A%%B
-echo %path%|find /i "%ProgramFiles%\Git\cmd">nul || setx path "%userpath%;%ProgramFiles%\Git\cmd"
-echo %path%|find /i "%ProgramFiles%\Git\cmd">nul || set path=%userpath%;%ProgramFiles%\Git\cmd
+set path=%PATH%;%ProgramFiles%\Git\cmd
 echo.
 goto :eof
 
