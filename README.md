@@ -75,6 +75,8 @@ They will be copied automatically to the appropriate folders:
 
 ### Latest Changes:  
 
+- Added support for SageAttention. 
+  - Add **`--use-sage-attention`** to **`run_nvidia_gpu.bat`** file to enable it  
 - Added support for RTX 5070, 5080 and 5090 GPUs (Blackwell)
 - Completely rewritten installation process  
 - 30% Faster Installation
