@@ -1,5 +1,5 @@
 @echo off
-Title ComfyUI Easy Install by ivo v0.40.1 (Ep40)
+Title ComfyUI Easy Install by ivo v0.40.2 (Ep40)
 :: Pixaroma Community Edition ::
 
 :: Set colors ::
@@ -101,7 +101,13 @@ call :get_node https://github.com/welltop-cn/ComfyUI-TeaCache
 :: Install onnxruntime ::
 .\python_embeded\python.exe -m pip install onnxruntime-gpu --no-cache-dir --no-warn-script-location
 
-:: Extract 'update' folder ::
+:: Install sageattention ::
+.\python_embeded\python.exe -m pip install sageattention --no-cache-dir --no-warn-script-location
+
+:: Install triton ::
+.\python_embeded\python.exe -m pip install triton-windows --no-cache-dir --no-warn-script-location
+
+:: Extract Run batch files, 'update' and 'include' folders ::
 cd ..\
 tar -xf .\Helper-CEI.zip
 cd ComfyUI-Easy-Install
