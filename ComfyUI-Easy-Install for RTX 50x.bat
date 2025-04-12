@@ -1,5 +1,5 @@
 @echo off
-Title ComfyUI Easy Install for 50x Series (Blackwell) by ivo v0.40.3 (Ep40)
+Title ComfyUI Easy Install for 50x Series (Blackwell) by ivo v0.42.0 (Ep42)
 :: Pixaroma Community Edition ::
 
 :: Set colors ::
