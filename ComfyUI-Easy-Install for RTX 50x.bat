@@ -1,9 +1,23 @@
 @echo off
-Title ComfyUI Easy Install for 50x Series (Blackwell) by ivo v0.42.0 (Ep42)
+Title ComfyUI Easy Install for 50x Series (Blackwell) by ivo v0.42.1 (Ep42)
 :: Pixaroma Community Edition ::
 
 :: Set colors ::
 call :set_colors
+
+:: Set Local Paths ::
+if exist %windir%\system32 set path=%PATH%;%windir%\System32
+if exist %windir%\system32\WindowsPowerShell\v1.0 set path=%PATH%;%windir%\system32\WindowsPowerShell\v1.0
+if exist %localappdata%\Microsoft\WindowsApps set path=%PATH%;%localappdata%\Microsoft\WindowsApps
+
+:: Test if running as Admin ::
+reg query "HKU\S-1-5-19" >nul 2>&1
+if %errorlevel% EQU 0 (
+	echo %warning%WARNING:%reset% The installer was run with %bold%Administrator privileges%reset%.
+	echo Please run it with %green%Standard user permissions%reset% ^(without Admin rights^).
+	echo Press any key to Exit...&Pause>nul
+	goto :eof
+)
 
 :: Check for Existing ComfyUI Folder ::
 if exist ComfyUI-Easy-Install (
@@ -20,11 +34,6 @@ if not exist Helper-CEI.zip (
 	echo Press any key to Exit...&Pause>nul
 	goto :eof
 )
-
-:: Set Local Paths ::
-if exist %windir%\system32 set path=%PATH%;%windir%\System32
-if exist %windir%\system32\WindowsPowerShell\v1.0 set path=%PATH%;%windir%\system32\WindowsPowerShell\v1.0
-if exist %localappdata%\Microsoft\WindowsApps set path=%PATH%;%localappdata%\Microsoft\WindowsApps
 
 :: Capture the start time ::
 for /f %%i in ('powershell -command "Get-Date -Format HH:mm:ss"') do set start=%%i
