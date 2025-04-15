@@ -35,7 +35,8 @@ One-click portable installation of ComfyUI for Windows 🔹 Pixaroma Community E
 - Kokoro  
 - Janus-Pro  
 - Sonic  
-- TeaCache  
+- TeaCache
+- KayTool  
 
 ---
 
