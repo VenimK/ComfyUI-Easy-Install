@@ -1,5 +1,5 @@
 @echo off
-Title ComfyUI Easy Install for 50x Series (Blackwell) by ivo v0.42.1 (Ep42)
+Title ComfyUI Easy Install for 50x Series (Blackwell) by ivo v0.43.0 (Ep43)
 :: Pixaroma Community Edition ::
 
 :: Set colors ::
@@ -106,6 +106,7 @@ call :get_node https://github.com/stavsap/comfyui-kokoro
 call :get_node https://github.com/CY-CHENYUE/ComfyUI-Janus-Pro
 call :get_node https://github.com/smthemex/ComfyUI_Sonic
 call :get_node https://github.com/welltop-cn/ComfyUI-TeaCache
+call :get_node https://github.com/kk8bit/KayTool
 
 :: Install onnxruntime ::
 .\python_embeded\python.exe -m pip install onnxruntime-gpu --no-cache-dir --no-warn-script-location
