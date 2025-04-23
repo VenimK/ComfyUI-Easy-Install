@@ -1,9 +1,12 @@
 @echo off
-Title ComfyUI Easy Install by ivo v0.43.0 (Ep43)
+Title ComfyUI Easy Install by ivo v0.44.0 (Ep44)
 :: Pixaroma Community Edition ::
 
 :: Set colors ::
 call :set_colors
+
+:: Set No Warnings ::
+set "silent=--no-cache-dir --no-warn-script-location"
 
 :: Set Local Paths ::
 if exist %windir%\system32 set path=%PATH%;%windir%\System32
@@ -98,7 +101,7 @@ call :get_node https://github.com/Yanick112/ComfyUI-ToSVG
 
 :: Install pylatexenc for kokoro ::
 curl.exe -OL https://www.piwheels.org/simple/pylatexenc/pylatexenc-3.0a32-py3-none-any.whl --ssl-no-revoke
-.\python_embeded\python.exe -m pip install pylatexenc-3.0a32-py3-none-any.whl --no-cache-dir --no-warn-script-location
+.\python_embeded\python.exe -m pip install pylatexenc-3.0a32-py3-none-any.whl %silent%
 erase pylatexenc-3.0a32-py3-none-any.whl
 Echo.
 
@@ -109,15 +112,15 @@ call :get_node https://github.com/welltop-cn/ComfyUI-TeaCache
 call :get_node https://github.com/kk8bit/KayTool
 
 :: Install onnxruntime ::
-.\python_embeded\python.exe -m pip install onnxruntime-gpu --no-cache-dir --no-warn-script-location
+.\python_embeded\python.exe -m pip install onnxruntime-gpu %silent%
 
 :: Install sageattention ::
-.\python_embeded\python.exe -m pip install sageattention --no-cache-dir --no-warn-script-location
+.\python_embeded\python.exe -m pip install sageattention %silent%
 
 :: Install triton ::
-.\python_embeded\python.exe -m pip install triton-windows --no-cache-dir --no-warn-script-location
+.\python_embeded\python.exe -m pip install triton-windows %silent%
 
-:: Extract Run batch files, 'update' and 'include' folders ::
+:: Extract 'update' folder ::
 cd ..\
 tar -xf .\Helper-CEI.zip
 cd ComfyUI-Easy-Install
@@ -170,15 +173,15 @@ md python_embeded&&cd python_embeded
 tar -xf ..\python-3.11.9-embed-amd64.zip
 erase ..\python-3.11.9-embed-amd64.zip
 curl -sSL https://bootstrap.pypa.io/get-pip.py -o get-pip.py --ssl-no-revoke
-.\python.exe get-pip.py --no-cache-dir --no-warn-script-location
+.\python.exe get-pip.py %silent%
 Echo ../ComfyUI> python311._pth
 Echo python311.zip>> python311._pth
 Echo .>> python311._pth
 Echo import site>> python311._pth
-.\python.exe -m pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 xformers==0.0.29.post3 --extra-index-url https://download.pytorch.org/whl/cu126 --no-cache-dir --no-warn-script-location
-.\python.exe -m pip install pygit2 --no-cache-dir --no-warn-script-location
+.\python.exe -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128 %silent%
+.\python.exe -m pip install pygit2 %silent%
 cd ..\ComfyUI
-..\python_embeded\python.exe -m pip install -r requirements.txt --no-cache-dir --no-warn-script-location
+..\python_embeded\python.exe -m pip install -r requirements.txt %silent%
 cd ..\
 echo.
 goto :eof
@@ -191,7 +194,7 @@ echo.
 if exist .\ComfyUI_windows_portable\ComfyUI cd .\ComfyUI_windows_portable
 git clone %git_url% ComfyUI/custom_nodes/%git_folder%
 if exist .\ComfyUI\custom_nodes\%git_folder%\requirements.txt (
-	.\python_embeded\python.exe -m pip install -r .\ComfyUI\custom_nodes\%git_folder%\requirements.txt --no-cache-dir --no-warn-script-location
+	.\python_embeded\python.exe -m pip install -r .\ComfyUI\custom_nodes\%git_folder%\requirements.txt %silent%
 )
 if exist .\ComfyUI\custom_nodes\%git_folder%\install.py (
 	.\python_embeded\python.exe .\ComfyUI\custom_nodes\%git_folder%\install.py

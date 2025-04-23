@@ -35,7 +35,7 @@ One-click portable installation of ComfyUI for Windows 🔹 Pixaroma Community E
 - Kokoro  
 - Janus-Pro  
 - Sonic  
-- TeaCache
+- TeaCache  
 - KayTool  
 
 ---
@@ -45,8 +45,7 @@ One-click portable installation of ComfyUI for Windows 🔹 Pixaroma Community E
 1. Download the latest release from [HERE](https://github.com/Tavris1/ComfyUI-Easy-Install/releases/latest/download/ComfyUI-Easy-Install.zip).  
 2. Extract the ZIP file to your desired folder.  
 **DO NOT** use system folders like **`Program Files`**, **`Windows`** or system root **`C:\`**  
-3. Run **`"ComfyUI-Easy-Install.bat"`** for GPUs other than the RTX 50 series  
-or **`"ComfyUI-Easy-Install for RTX 50x.bat"`** if you have RTX 5070, 5080 or 5090 GPU.  
+3. Run **`"ComfyUI-Easy-Install.bat"`**  
   - After installation, you can rename or move **`"ComfyUI-Easy-Install"`** folder if needed.  
   - This installation does not affect existing ComfyUI installations in any way.  
   This way you can have multiple installations in different folders.  
@@ -75,10 +74,10 @@ They will be copied automatically to the appropriate folders:
 ---
 
 ### Latest Changes:  
-
+- Added Stable PyTorch v2.7.0 with CUDA 12.8. Stable Support for all kind of nvidia GPUs, incl. 50x series
 - Added support for SageAttention. 
   - Add **`--use-sage-attention`** to **`run_nvidia_gpu.bat`** file to enable it  
-- Added support for RTX 5070, 5080 and 5090 GPUs (Blackwell)
+- Added support for RTX 5070, 5080, and 5090 (Blackwell) GPUs using the nightly version of PyTorch.
 - Completely rewritten installation process  
 - 30% Faster Installation
 - Eliminated dependency on 7zip  
