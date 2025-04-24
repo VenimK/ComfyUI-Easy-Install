@@ -1,5 +1,5 @@
 @echo off
-Title ComfyUI Easy Install by ivo v0.44.1 (Ep44)
+Title ComfyUI Easy Install by ivo v0.44.2 (Ep44)
 :: Pixaroma Community Edition ::
 
 :: Set colors ::
@@ -178,7 +178,7 @@ Echo ../ComfyUI> python311._pth
 Echo python311.zip>> python311._pth
 Echo .>> python311._pth
 Echo import site>> python311._pth
-.\python.exe -m pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 xformers==0.0.29.post3 --extra-index-url https://download.pytorch.org/whl/cu126 %silent%
+.\python.exe -m pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --extra-index-url https://download.pytorch.org/whl/cu126 %silent%
 .\python.exe -m pip install pygit2 %silent%
 cd ..\ComfyUI
 ..\python_embeded\python.exe -m pip install -r requirements.txt %silent%
