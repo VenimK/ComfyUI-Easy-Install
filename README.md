@@ -74,7 +74,14 @@ They will be copied automatically to the appropriate folders:
 
 ---
 
-### Latest Changes:  
+### Latest Events:  
+
+**⚠️ Warning!**  
+If three of the nodes fail to load after the latest ComfyUI update, run this cmd in the `python_embeded` folder to fix a `xformers` conflict:  
+```bash
+.\python.exe -m pip uninstall xformers
+```  
+
 - Added Stable PyTorch v2.7.0 with CUDA 12.8. Stable Support for all kind of nvidia GPUs, incl. 50x series
 - Added support for SageAttention. 
   - Add **`--use-sage-attention`** to **`run_nvidia_gpu.bat`** file to enable it  
