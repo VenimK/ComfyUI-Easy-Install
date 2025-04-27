@@ -74,10 +74,9 @@ They will be copied automatically to the appropriate folders:
 
 ---
 
-### Latest Events:  
+### Latest News:  
 
-**⚠️ Warning!**  
-If three of the nodes fail to load after the latest ComfyUI update, run this cmd in the `python_embeded` folder to fix a `xformers` conflict:  
+**⚠️ Warning!** If three of the nodes fail to load after the latest ComfyUI update, run this cmd in the `python_embeded`:   
 ```bash
 .\python.exe -m pip uninstall xformers
 ```  
