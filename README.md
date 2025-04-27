@@ -97,12 +97,6 @@ If three of the nodes fail to load after the latest ComfyUI update, run this cmd
 ---
 
 ## Screenshots  
-![VideoHelper](https://github.com/user-attachments/assets/473d9acd-3d8d-4c25-acc6-7c2760067382)
-![Searge](https://github.com/user-attachments/assets/3e54b80e-1ca7-4fe4-89c2-3d1b2beb7e8a)
 ![End](https://github.com/user-attachments/assets/da090bd5-0e13-41e1-8a81-bf2d24a8632c)  
 
-[Support me on PayPal](https://www.paypal.com/donate/?hosted_button_id=MUMKV69X6TTZS)  
-
-[![Donate](https://img.shields.io/badge/Support-PayPal-blue.svg)](https://www.paypal.com/donate/?hosted_button_id=MUMKV69X6TTZS)  
-
-
+[![Support me on-Paypal-blue](https://github.com/user-attachments/assets/a5fd6af1-5842-4c62-9e07-b021b5dc52fd)](https://paypal.me/tavris1)  
