@@ -90,6 +90,6 @@ They will be copied automatically to the appropriate folders:
 
 <div align="center">
 
-### Support me on Paypal
+### Support me on PayPal
 [![Support me on-Paypal-blue](https://github.com/user-attachments/assets/c1a767b0-f3d9-48c7-877b-12653d2f9ac7)](https://paypal.me/tavris1)  
 </div>
