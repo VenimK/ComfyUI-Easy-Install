@@ -73,7 +73,7 @@ They will be copied automatically to the appropriate folders:
 > **Note**: Some folders like **LLM** and **llm_gguf** cannot be redirected this way.  
 
 ---
-**⚠️ Warning!** If three nodes fail to load after the latest ComfyUI update, run this command in the python_embedded folder:
+**⚠️ Warning!** If three nodes fail to load after the latest ComfyUI update, run this cmd in the **`python_embedded`** folder:
 ```bash
 .\python.exe -m pip uninstall xformers
 ```  
