@@ -45,11 +45,9 @@
 ## Installation Steps:  
 
 1. Download the latest release [>> HERE <<](https://github.com/Tavris1/ComfyUI-Easy-Install/releases/latest/download/ComfyUI-Easy-Install.zip).  
-2. Extract the ZIP file into a new folder..  
+2. Extract the ZIP file into a new folder.  
 **Important:** Do **not** extract to system folders such as **`Program Files`**, **`Windows`**, or directly to **`C:\`**.  
-3. Run one of the following:  
-   - **`ComfyUI-Easy-Install.bat`** — recommended for most users (non-RTX 50x GPUs).  
-   - **`ComfyUI-Easy-Install for RTX 50x.bat`** — required if you have an RTX 5060, 5070, 5080, or 5090 GPU.  
+3. Run **`ComfyUI-Easy-Install.bat`**  
 
 ## Notes: 
 - After installation, you can rename or move **`ComfyUI-Easy-Install`** folder if needed.

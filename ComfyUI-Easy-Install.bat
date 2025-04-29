@@ -1,5 +1,5 @@
 @echo off
-Title ComfyUI Easy Install by ivo v0.44.2 (Ep44)
+Title ComfyUI Easy Install by ivo v0.45.0 (Ep45)
 :: Pixaroma Community Edition ::
 
 :: Set colors ::
@@ -103,6 +103,8 @@ call :get_node https://github.com/Yanick112/ComfyUI-ToSVG
 curl.exe -OL https://www.piwheels.org/simple/pylatexenc/pylatexenc-3.0a32-py3-none-any.whl --ssl-no-revoke
 .\python_embeded\python.exe -m pip install pylatexenc-3.0a32-py3-none-any.whl %silent%
 erase pylatexenc-3.0a32-py3-none-any.whl
+REM :: Install compatible mediapipe for kokoro ::
+REM .\python_embeded\python.exe -m pip install mediapipe==0.10.14
 Echo.
 
 call :get_node https://github.com/stavsap/comfyui-kokoro
@@ -110,15 +112,10 @@ call :get_node https://github.com/CY-CHENYUE/ComfyUI-Janus-Pro
 call :get_node https://github.com/smthemex/ComfyUI_Sonic
 call :get_node https://github.com/welltop-cn/ComfyUI-TeaCache
 call :get_node https://github.com/kk8bit/KayTool
+if exist ComfyUI\custom_nodes\KayTool ren ComfyUI\custom_nodes\KayTool kaytool
 
 :: Install onnxruntime ::
 .\python_embeded\python.exe -m pip install onnxruntime-gpu %silent%
-
-:: Install sageattention ::
-.\python_embeded\python.exe -m pip install sageattention %silent%
-
-:: Install triton ::
-.\python_embeded\python.exe -m pip install triton-windows %silent%
 
 :: Extract 'update' folder ::
 cd ..\
@@ -178,7 +175,7 @@ Echo ../ComfyUI> python311._pth
 Echo python311.zip>> python311._pth
 Echo .>> python311._pth
 Echo import site>> python311._pth
-.\python.exe -m pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --extra-index-url https://download.pytorch.org/whl/cu126 %silent%
+.\python.exe -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128 %silent%
 .\python.exe -m pip install pygit2 %silent%
 cd ..\ComfyUI
 ..\python_embeded\python.exe -m pip install -r requirements.txt %silent%
@@ -191,10 +188,9 @@ set git_url=%~1
 for %%x in (%git_url:/= %) do set git_folder=%%x
 echo %green%::::::::::::::: Installing %git_folder% :::::::::::::::%reset%
 echo.
-if exist .\ComfyUI_windows_portable\ComfyUI cd .\ComfyUI_windows_portable
 git clone %git_url% ComfyUI/custom_nodes/%git_folder%
 if exist .\ComfyUI\custom_nodes\%git_folder%\requirements.txt (
-	.\python_embeded\python.exe -m pip install -r .\ComfyUI\custom_nodes\%git_folder%\requirements.txt %silent%
+	.\python_embeded\python.exe -m pip install -r .\ComfyUI\custom_nodes\%git_folder%\requirements.txt --use-pep517 %silent%
 )
 if exist .\ComfyUI\custom_nodes\%git_folder%\install.py (
 	.\python_embeded\python.exe .\ComfyUI\custom_nodes\%git_folder%\install.py
