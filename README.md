@@ -48,11 +48,8 @@
 2. Extract the ZIP file into a new folder.  
 **Important:** Do **not** extract to system folders such as **`Program Files`**, **`Windows`**, or directly to **`C:\`**.  
 3. Run **`ComfyUI-Easy-Install.bat`**  
-
-## Notes: 
-- After installation, you can rename or move **`ComfyUI-Easy-Install`** folder if needed.
-- This installation does not affect existing ComfyUI installations in any way.  
-  This way you can have multiple installations in different folders.
+> - This installation won't affect existing ComfyUI installs. Multiple ComfyUIs are supported.
+> - After installation, you can rename or move **`ComfyUI-Easy-Install`** folder if needed.
 
 ## Tips for Existing Installations:  
 - To preserve settings from other ComfyUI installations, place the following files in the same folder as the installer.  
@@ -74,12 +71,6 @@ They will be copied automatically to the appropriate folders:
        - This allows ComfyUI to use your existing model files without additional downloads.  
 
 > **Note**: Some folders like **LLM** and **llm_gguf** cannot be redirected this way.  
-
----
-**⚠️ Warning!** If three nodes fail to load after the latest ComfyUI update, run this cmd in the **`python_embedded`** folder:  
-```bash
-.\python.exe -m pip uninstall xformers
-```  
 
 ---
 
