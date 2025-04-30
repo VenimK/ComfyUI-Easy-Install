@@ -1,5 +1,5 @@
 @echo off
-Title ComfyUI Easy Install by ivo v0.45.0 (Ep45)
+Title ComfyUI Easy Install by ivo v0.45.1 (Ep45)
 :: Pixaroma Community Edition ::
 
 :: Set colors ::
@@ -43,7 +43,7 @@ for /f %%i in ('powershell -command "Get-Date -Format HH:mm:ss"') do set start=%
 
 :: Clear Pip Cache ::
 if exist "%localappdata%\pip\cache" rd /s /q "%localappdata%\pip\cache"&&md "%localappdata%\pip\cache"
-echo %green%::::::::::::::: Clearing Pip Cache %reset%%yellow%Done%reset%%green% :::::::::::::::%reset%
+echo %green%::::::::::::::: Clearing Pip Cache %yellow%Done%green% :::::::::::::::%reset%
 echo.
 
 :: Install/Update Git ::
@@ -76,43 +76,40 @@ cd ComfyUI-Easy-Install
 call :install_comfyui
 
 :: Install Pixaroma's Related Nodes ::
-call :get_node https://github.com/ltdrdata/ComfyUI-Manager
-call :get_node https://github.com/WASasquatch/was-node-suite-comfyui
-call :get_node https://github.com/yolain/ComfyUI-Easy-Use
-call :get_node https://github.com/Fannovel16/comfyui_controlnet_aux
-call :get_node https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes
-call :get_node https://github.com/crystian/ComfyUI-Crystools
-call :get_node https://github.com/rgthree/rgthree-comfy
-call :get_node https://github.com/city96/ComfyUI-GGUF
-call :get_node https://github.com/kijai/ComfyUI-Florence2
-call :get_node https://github.com/SeargeDP/ComfyUI_Searge_LLM
-call :get_node https://github.com/gseth/ControlAltAI-Nodes
-call :get_node https://github.com/stavsap/comfyui-ollama
-call :get_node https://github.com/MohammadAboulEla/ComfyUI-iTools
-call :get_node https://github.com/spinagon/ComfyUI-seamless-tiling
-call :get_node https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch
-call :get_node https://github.com/Lerc/canvas_tab
-call :get_node https://github.com/1038lab/ComfyUI-OmniGen
-call :get_node https://github.com/john-mnz/ComfyUI-Inspyrenet-Rembg
-call :get_node https://github.com/kaibioinfo/ComfyUI_AdvancedRefluxControl
-call :get_node https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite
-call :get_node https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait
-call :get_node https://github.com/Yanick112/ComfyUI-ToSVG
+call :get_node https://github.com/Comfy-Org/ComfyUI-Manager						comfyui-manager
+call :get_node https://github.com/WASasquatch/was-node-suite-comfyui			was-node-suite-comfyui
+call :get_node https://github.com/yolain/ComfyUI-Easy-Use						ComfyUI-Easy-Use
+call :get_node https://github.com/Fannovel16/comfyui_controlnet_aux				comfyui_controlnet_aux
+call :get_node https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes			ComfyUI_Comfyroll_CustomNodes
+call :get_node https://github.com/crystian/ComfyUI-Crystools					ComfyUI-Crystools
+call :get_node https://github.com/rgthree/rgthree-comfy							rgthree-comfy
+call :get_node https://github.com/city96/ComfyUI-GGUF							ComfyUI-GGUF
+call :get_node https://github.com/kijai/ComfyUI-Florence2						ComfyUI-Florence2
+call :get_node https://github.com/SeargeDP/ComfyUI_Searge_LLM					ComfyUI_Searge_LLM
+call :get_node https://github.com/gseth/ControlAltAI-Nodes						controlaltai-nodes
+call :get_node https://github.com/stavsap/comfyui-ollama						comfyui-ollama
+call :get_node https://github.com/MohammadAboulEla/ComfyUI-iTools				comfyui-itools
+call :get_node https://github.com/spinagon/ComfyUI-seamless-tiling				comfyui-seamless-tiling
+call :get_node https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch		comfyui-inpaint-cropandstitch
+call :get_node https://github.com/Lerc/canvas_tab								canvas_tab
+call :get_node https://github.com/1038lab/ComfyUI-OmniGen						comfyui-omnigen
+call :get_node https://github.com/john-mnz/ComfyUI-Inspyrenet-Rembg				comfyui-inspyrenet-rembg
+call :get_node https://github.com/kaibioinfo/ComfyUI_AdvancedRefluxControl		ComfyUI_AdvancedRefluxControl
+call :get_node https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite			comfyui-videohelpersuite
+call :get_node https://github.com/PowerHouseMan/ComfyUI-AdvancedLivePortrait	comfyui-advancedliveportrait
+call :get_node https://github.com/Yanick112/ComfyUI-ToSVG						ComfyUI-ToSVG
 
 :: Install pylatexenc for kokoro ::
 curl.exe -OL https://www.piwheels.org/simple/pylatexenc/pylatexenc-3.0a32-py3-none-any.whl --ssl-no-revoke
 .\python_embeded\python.exe -m pip install pylatexenc-3.0a32-py3-none-any.whl %silent%
-erase pylatexenc-3.0a32-py3-none-any.whl
-REM :: Install compatible mediapipe for kokoro ::
-REM .\python_embeded\python.exe -m pip install mediapipe==0.10.14
+if exist pylatexenc-3.0a32-py3-none-any.whl erase pylatexenc-3.0a32-py3-none-any.whl
 Echo.
 
-call :get_node https://github.com/stavsap/comfyui-kokoro
-call :get_node https://github.com/CY-CHENYUE/ComfyUI-Janus-Pro
-call :get_node https://github.com/smthemex/ComfyUI_Sonic
-call :get_node https://github.com/welltop-cn/ComfyUI-TeaCache
-call :get_node https://github.com/kk8bit/KayTool
-if exist ComfyUI\custom_nodes\KayTool ren ComfyUI\custom_nodes\KayTool kaytool
+call :get_node https://github.com/stavsap/comfyui-kokoro						comfyui-kokoro
+call :get_node https://github.com/CY-CHENYUE/ComfyUI-Janus-Pro					janus-pro
+call :get_node https://github.com/smthemex/ComfyUI_Sonic						ComfyUI_Sonic
+call :get_node https://github.com/welltop-cn/ComfyUI-TeaCache					teacache
+call :get_node https://github.com/kk8bit/KayTool								kaytool
 
 :: Install onnxruntime ::
 .\python_embeded\python.exe -m pip install onnxruntime-gpu %silent%
@@ -136,7 +133,7 @@ for /f %%i in ('powershell -command "(New-TimeSpan -Start (Get-Date '%start%') -
 :: Final Messages ::
 echo.
 echo %green%::::::::::::::: Installation Complete :::::::::::::::%reset%
-echo %green%::::::::::::::: Total Running Time:%reset%%red% %diff% %reset%%green%seconds%reset%
+echo %green%::::::::::::::: Total Running Time:%red% %diff% %green%seconds%reset%
 echo %yellow%::::::::::::::: Press any key to exit :::::::::::::::%reset%&Pause>nul
 goto :eof
 
@@ -153,7 +150,7 @@ goto :eof
 
 :install_git
 :: https://git-scm.com/
-echo %green%::::::::::::::: Installing/Updating Git :::::::::::::::%reset%
+echo %green%::::::::::::::: Installing/Updating%yellow% Git %green%:::::::::::::::%reset%
 echo.
 winget install --id Git.Git -e --source winget
 set path=%PATH%;%ProgramFiles%\Git\cmd
@@ -162,7 +159,7 @@ goto :eof
 
 :install_comfyui
 :: https://github.com/comfyanonymous/ComfyUI
-echo %green%::::::::::::::: Installing ComfyUI :::::::::::::::%reset%
+echo %green%::::::::::::::: Installing%yellow% ComfyUI %green%:::::::::::::::%reset%
 echo.
 git clone https://github.com/comfyanonymous/ComfyUI ComfyUI
 curl -OL https://www.python.org/ftp/python/3.11.9/python-3.11.9-embed-amd64.zip --ssl-no-revoke
@@ -185,8 +182,9 @@ goto :eof
 
 :get_node
 set git_url=%~1
-for %%x in (%git_url:/= %) do set git_folder=%%x
-echo %green%::::::::::::::: Installing %git_folder% :::::::::::::::%reset%
+:: for %%x in (%git_url:/= %) do set git_folder=%%x
+set git_folder=%~2
+echo %green%::::::::::::::: Installing%yellow% %git_folder% %green%:::::::::::::::%reset%
 echo.
 git clone %git_url% ComfyUI/custom_nodes/%git_folder%
 if exist .\ComfyUI\custom_nodes\%git_folder%\requirements.txt (
