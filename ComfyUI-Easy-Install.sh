@@ -173,7 +173,7 @@ copy_files() {
 install_comfyui
 
 # Install Pixaroma's Related Nodes
-get_node https://github.com/ltdrdata/ComfyUI-Manager
+get_node https://github.com/Comfy-Org/ComfyUI-Manager
 get_node https://github.com/WASasquatch/was-node-suite-comfyui
 get_node https://github.com/yolain/ComfyUI-Easy-Use
 get_node https://github.com/Fannovel16/comfyui_controlnet_aux
@@ -229,7 +229,7 @@ unzip -o Helper-CEI.zip
 cd ComfyUI-Easy-Install
 
 # Copy additional files if they exist
-copy_files run_nvidia_gpu.sh ./
+copy_files run_comfyui.sh ./
 copy_files extra_model_paths.yaml ComfyUI
 copy_files comfy.settings.json ComfyUI/user/default
 copy_files was_suite_config.json ComfyUI/custom_nodes/was-node-suite-comfyui
