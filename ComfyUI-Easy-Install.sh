@@ -1,6 +1,6 @@
 #!/bin/bash
 # ComfyUI Easy Install by ivo - macOS ARM version
-# Adapted from the Windows version v0.44.3 (Ep44)
+# Adapted from the Windows version  v0.45.1 (Ep45)
 # Pixaroma Community Edition
 
 # Set colors
