@@ -1,6 +1,6 @@
 #!/bin/bash
 # ComfyUI Easy Install by ivo - macOS ARM version
-# Title ComfyUI Easy Install by ivo v0.46.0 (Ep46)
+# Title ComfyUI Easy Install by ivo v0.48.0 (Ep48)
 # Pixaroma Community Edition
 
 # Set colors
@@ -625,8 +625,115 @@ cd ../../..
 get_node https://github.com/CY-CHENYUE/ComfyUI-Janus-Pro
 get_node https://github.com/smthemex/ComfyUI_Sonic
 get_node https://github.com/welltop-cn/ComfyUI-TeaCache
-get_node https://github.com/kk8bit/kaytool
+get_node https://github.com/kk8bit/Kaytool
 get_node https://github.com/shiimizu/ComfyUI-TiledDiffusion
+get_node https://github.com/Lightricks/ComfyUI-LTXVideo
+get_node https://github.com/kijai/ComfyUI-KJNodes
+get_node https://github.com/TencentARC/bringing-old-photos-back-to-life
+
+# Install dlib for Apple Silicon and fix BOPBTL extension
+echo -e "${yellow}Installing dlib for Apple Silicon and fixing BOPBTL extension...${reset}"
+if [ -d "ComfyUI/custom_nodes/bringing-old-photos-back-to-life" ]; then
+    # Install CMake if not already installed
+    if ! command -v cmake &> /dev/null; then
+        echo -e "${yellow}Installing CMake (required for dlib)...${reset}"
+        brew install cmake
+    fi
+    
+    # Activate Python environment
+    source python_embedded/bin/activate
+    
+    # Uninstall any existing dlib
+    python -m pip uninstall -y dlib
+    
+    # Set environment variables for optimized build
+    export MACOSX_DEPLOYMENT_TARGET=11.0  # Minimum macOS version
+    export CFLAGS="-O3 -march=armv8-a+simd"  # Optimize for ARM64
+    export CXXFLAGS="-O3 -march=armv8-a+simd"  # Optimize for ARM64
+    
+    # Install dlib with specific flags
+    python -m pip install dlib==19.24.1 --verbose --no-cache-dir
+    
+    # Fix model_path in BOPBTL_LoadRestoreOldPhotosModel class
+    nodes_path="ComfyUI/custom_nodes/bringing-old-photos-back-to-life/nodes.py"
+    backup_path="${nodes_path}.bak"
+    
+    # Create a backup if it doesn't exist
+    if [ ! -f "$backup_path" ]; then
+        cp "$nodes_path" "$backup_path"
+    fi
+    
+    # Create a Python script to fix the model_path
+    cat > fix_bopbtl.py << 'EOF'
+#!/usr/bin/env python3
+import os
+import re
+
+# Path to the nodes.py file
+nodes_path = "ComfyUI/custom_nodes/bringing-old-photos-back-to-life/nodes.py"
+
+# Read the file content
+with open(nodes_path, 'r') as f:
+    content = f.read()
+
+# Fix the model_path issue in BOPBTL_LoadRestoreOldPhotosModel class
+pattern = r'class BOPBTL_LoadRestoreOldPhotosModel\(.*?\):\s+@classmethod\s+def INPUT_TYPES\(s\):'
+match = re.search(pattern, content, re.DOTALL)
+
+if match:
+    # Find the __init__ method in the class
+    init_pattern = r'def __init__\(self.*?\):(.*?)def'
+    init_match = re.search(init_pattern, content[match.end():], re.DOTALL)
+    
+    if init_match:
+        # Current __init__ content
+        init_content = init_match.group(1)
+        
+        # Check if model_path is already defined
+        if 'self.model_path' not in init_content:
+            # Add model_path as an instance variable
+            new_init_content = init_content.rstrip() + "\n        self.model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'restoration')\n        "
+            
+            # Replace the old init content with the new one
+            new_content = content[:match.end() + init_match.start(1)] + new_init_content + content[match.end() + init_match.end(1):]
+            
+            # Write the modified content back to the file
+            with open(nodes_path, 'w') as f:
+                f.write(new_content)
+            
+            print("Successfully added model_path to BOPBTL_LoadRestoreOldPhotosModel.__init__()")
+        else:
+            print("model_path is already defined in __init__, no changes needed")
+
+# Also check the load_models method to ensure it's using self.model_path
+load_models_pattern = r'def load_models\(self.*?\):(.*?)(?:def|\Z)'
+load_models_match = re.search(load_models_pattern, content, re.DOTALL)
+
+if load_models_match:
+    load_models_content = load_models_match.group(1)
+    
+    # Check if it's using model_path as a local variable without defining it
+    if 'model_path =' not in load_models_content and 'model_path' in load_models_content:
+        # Replace references to model_path with self.model_path
+        modified_load_models = re.sub(r'(?<!\.)model_path', 'self.model_path', load_models_content)
+        
+        # Write the modified content back to the file
+        new_content = content[:load_models_match.start(1)] + modified_load_models + content[load_models_match.end(1):]
+        
+        with open(nodes_path, 'w') as f:
+            f.write(new_content)
+        
+        print("Successfully replaced model_path references with self.model_path in load_models()")
+    else:
+        print("No need to modify model_path references in load_models()")
+EOF
+    
+    # Run the fix script
+    python fix_bopbtl.py
+    rm fix_bopbtl.py
+    
+    echo -e "${green}Successfully installed dlib and fixed BOPBTL extension for Apple Silicon!${reset}"
+fi
 
 # Install onnxruntime for ARM Macs
 source python_embedded/bin/activate
