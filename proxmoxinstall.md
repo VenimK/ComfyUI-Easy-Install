@@ -1,13 +1,42 @@
-# Proxmox ComfyUI Installation Guide
+<div align="center">
 
-This guide covers the complete installation process for ComfyUI on Proxmox, including NVIDIA driver setup and container configuration.
+# 🚀 Proxmox ComfyUI Installation Guide
 
-## 1. Fix Storage if needed
+### Complete guide for setting up ComfyUI with NVIDIA GPU support on Proxmox
+
+[![ComfyUI](https://img.shields.io/badge/ComfyUI-Stable_Diffusion-blue?style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAdgAAAHYBTnsmCAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAADSSURBVDiNrdKxSgNBFIXhb9BtRLAIKIiVYGFhYeELiI2VL2Bh4wtYWfkSFhYWgpWVhYVgYWGhIhYWIiIiImJEUNkYSFxi3M3usmcYmMuc/50z9xbUcYEH3GAVyzjFI27RxgRW8IwzjGMNp3jCHaawjgc0MYsNPOMUE1jBHu7RwCy2cI8bjGEZh7jGNWaxgyucYwKL2McVzjCFTRyjgwWs4ghtXGISG/iNxAF+4AufsYxhHj/xG5+RvBSJv/ET75G8EEP4wHt0X4rkYfzDW3RfiuS5X+w5udAqJg8lAAAAAElFTkSuQmCC)](https://github.com/comfyanonymous/ComfyUI)
+[![Proxmox](https://img.shields.io/badge/Proxmox-Virtual_Environment-orange?style=for-the-badge&logo=proxmox)](https://www.proxmox.com/)
+[![NVIDIA](https://img.shields.io/badge/NVIDIA-GPU_Support-brightgreen?style=for-the-badge&logo=nvidia)](https://www.nvidia.com/)
+
+---
+
+</div>
+
+## 📋 Table of Contents
+
+1. [🛠️ Fix Storage (if needed)](#1-fix-storage-if-needed)
+2. [🖥️ Proxmox Host Preparation](#2-proxmox-host-preparation)
+3. [📦 Container Setup](#3-container-setup)
+4. [🎨 ComfyUI Installation](#4-comfyui-installation)
+5. [🚀 Running ComfyUI](#5-running-comfyui)
+6. [🔧 Troubleshooting](#6-troubleshooting)
+7. [🔄 Maintenance](#7-maintenance)
+
+---
+
+## 1. 🛠️ Fix Storage if needed
+
+<details>
+<summary>Click to expand storage configuration steps</summary>
+
+> 🎥 **Video Guides**:
 https://youtu.be/_u8qTN3cCnQ?si=jtQ-zHKzAUoKvjRC&t=899
 https://youtu.be/_u8qTN3cCnQ?si=PBvabV3ARh_c71xY&t=1236
 
 
-## 2. Proxmox Host Preparation
+## 2. 🖥️ Proxmox Host Preparation
+
+### Initial Setup
 
 Login to your Proxmox Host Machine
 
@@ -61,9 +90,13 @@ When it is rebooted come back and rerun the ./NV* –dkms installation again and
 
 https://digitalspaceport.com/wp-content/uploads/2025/03/proxmox-ollama-openwebui-ai-server-010.jpg
 
-## 3. Container Setup
+## 3. 📦 Container Setup
 
-### 3.1 Download Container Templates
+> 💡 **Tip**: Choose Debian 12 for better stability and compatibility with AI workloads
+
+### 3.1 📥 Download Container Templates
+
+> 🔄 **Choose Your Base**: Select either Debian 12 (recommended) or Ubuntu 22.04
 First, download the container templates from the Proxmox web interface:
 1. Go to your node (e.g., 'pve')
 2. Select 'Shell'
@@ -77,7 +110,9 @@ pveam download local debian-12-standard_12.2-1_amd64.tar.gz
 pveam download local ubuntu-22.04-standard_22.04-1_amd64.tar.gz
 ```
 
-### 3.2 Create LXC Container
+### 3.2 🏗️ Create LXC Container
+
+> ⚙️ **Container Configuration**: Adjust resources based on your needs
 
 #### Option 1: Using Debian 12 (Recommended)
 ```bash
@@ -107,7 +142,9 @@ pct create 100 local:vztmpl/ubuntu-22.04-standard_22.04-1_amd64.tar.gz \
   --unprivileged 0
 ```
 
-### 3.3 Start and Test Container - and Updates
+### 3.3 🔌 Start and Test Container
+
+> ✅ **Verification**: Ensure everything is working properly
 ```bash
 # Start the container
 pct start 100
@@ -122,7 +159,9 @@ pct enter 100
 ping -c 4 8.8.8.8
 ```
 
-### 3.4 Initial Container Setup
+### 3.4 🛠️ Initial Container Setup
+
+> 📦 **Base Setup**: Install essential utilities and updates
 ```bash
 # Enter container
 pct enter 100
@@ -136,7 +175,9 @@ apt install -y curl wget git htop nano nvtop
 
 
 
-### 3.5 Enable NVIDIA GPU in Container
+### 3.5 🎮 Enable NVIDIA GPU in Container
+
+> ⚠️ **Important**: Follow these steps carefully to ensure proper GPU passthrough
 
 Take note of the container number ID. In the host terminal still type ls -la. It will print the full name of the nvidia driver. It may look something like this: NVIDIA-Linux-x86_64-570.133.07.run
 
@@ -189,7 +230,9 @@ Now we need to create a crontab that will fire at reboot so the LXC container ca
 
 https://digitalspaceport.com/wp-content/uploads/2025/03/proxmox-ollama-openwebui-ai-server-031.jpg
 
-### 3.3 Mount NVMe Drive
+### 3.6 💾 Mount NVMe Drive
+
+> 💡 **Note**: This step is crucial for storing your models and outputs
 ```bash
 # Format NVMe if needed
 mkfs.ext4 /dev/nvme0n1p1
@@ -202,9 +245,13 @@ mount /dev/nvme0n1p1 /mnt/models
 ./setup_ct_mount.sh
 ```
 
-## 4. ComfyUI Installation
+## 4. 🎨 ComfyUI Installation
 
-### 4.1 Install Dependencies
+> 🌟 **Pro Tip**: Make sure your GPU is properly recognized before proceeding
+
+### 4.1 📦 Install Dependencies
+
+> 🔧 **Required Packages**: These are essential for running ComfyUI
 ```bash
 pct enter 100
 apt update && apt install -y python3-pip python3-venv git wget curl
@@ -227,7 +274,9 @@ chmod +x Extra_Model_Paths_Maker.sh
 cp extra_model_paths.yaml /opt/ComfyUI-Easy-Install/ComfyUI/
 ```
 
-## 5. Running ComfyUI
+## 5. 🚀 Running ComfyUI
+
+> 🌐 **Access**: ComfyUI will be available at `http://your-proxmox-ip:8188`
 
 ### 5.1 Start ComfyUI
 ```bash
@@ -241,7 +290,9 @@ Open in browser:
 http://your-proxmox-ip:8188
 ```
 
-## 6. Troubleshooting
+## 6. 🔧 Troubleshooting
+
+> 🔍 **Common Issues and Solutions**
 
 ### 6.1 Check NVIDIA Status
 ```bash
@@ -264,7 +315,9 @@ python3 -c "import torch; print(torch.cuda.is_available())"
 - If models aren't visible: Check mount points and permissions
 - If web interface is inaccessible: Check firewall settings
 
-## 7. Maintenance
+## 7. 🔄 Maintenance
+
+> ⚡ **Keep your system up to date**
 
 ### 7.1 Update ComfyUI
 ```bash
